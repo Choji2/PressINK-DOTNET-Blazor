@@ -1,0 +1,238 @@
+﻿@using PressINK_Server_App.Model.PrinterPingModel;
+@using PressINK_Server_App.Services;
+@using PressINK_Server_App.Shared.Auth
+@using Web_scraper_practice_.Model.Printer_DB_Models;
+@using Web_scraper_practice_.Model.Printer_DB_Models.Sub_models;
+@inject PrinterService PrinterServices;
+
+<style>
+
+     Body{
+
+            --mud-palette-success: #8bc34a;);
+     }
+
+    .monospace {
+        font-family: 'Press Start 2P', Courier, monospace;
+    }
+
+
+</style>
+
+    <AuthorizeView>
+         
+        <MudPaper Elevation="0" Style="background-color:transparent">
+        <MudGrid>
+
+            <MudItem sm="8">
+                <MudPaper Height="180px" Style="@($"background:{Colors.LightGreen.Default};")" Elevation="0">                   
+                    <UserDisplay/>
+                </MudPaper>
+
+            </MudItem>
+
+            <MudItem  sm="4">
+                <MudPaper Style="@($"color:{Colors.LightGreen.Default};background-color:transparent")" Class="px-3 py-2 mt-1  border-l-4 border-solid mud-border-primary" Elevation="0" Height="92px">
+                    <Date_time/>
+                </MudPaper>
+            </MudItem>
+
+        </MudGrid>
+        </MudPaper>
+
+        <MudTabs Outlined="false" Position="Position.End" Rounded="true"
+             ApplyEffectsToContainer="true" Class="mt-3  mud-border-primary" PanelClass="pa-3"
+             ActivePanelIndex="0"
+             Style="width:100%;"
+             >
+        
+        <MudTabPanel Text="Overview" Style="width:100%">
+            <MudGrid>
+                <MudItem sm="8">
+                    <MudPaper Height="100px" Class="px-5 pt-2 border-l-4 border-solid mud-border-primary pa-4" Style="background-color:transparent;" Elevation="0">
+                        <MudText Typo="Typo.h3"  >
+                            <strong>@SD.PlantTag Snapshot</strong>
+                        </MudText>
+                    </MudPaper>
+
+                </MudItem>
+
+                <MudItem sm="4">
+                    Total Printers
+                    <MudPaper Elevation="3" Class="justify-center d-flex px-5 py-3 mud-border-primary" Style="@($"background-color:{Colors.LightGreen.Default}")" Width="100%" Height="100px">
+
+                        <MudPaper Class="align-self-center" Elevation="0" Style="background-color:transparent;">
+                            <MudText Typo="Typo.h3"><MudIcon Icon="@Icons.Material.Filled.Print" Size="Size.Large" /> @printerList.Count() </MudText>
+                        </MudPaper>
+                    </MudPaper>
+                </MudItem>
+
+                <MudItem sm="12">
+                    Online %
+                    <MudPaper Height="160px" Class="px-5 py-3 mud-border-primary" Elevation="3" Outlined="true" >
+                       
+                        <MudText Class="" Typo="Typo.h3"><MudIcon Icon="@Icons.Material.Filled.ConnectWithoutContact" Size="Size.Large" /> @Double.Round(((onlineCount / printerList.Count()) * 100),2)</MudText>
+                        @if (Double.Round(((onlineCount / printerList.Count()) * 100), 2) > 50)
+                        {
+                            <MudProgressLinear Color="Color.Success" Striped="true" Size="Size.Large" Value="@Double.Round(((onlineCount / printerList.Count()) * 100),2)" Class="my-7" />
+                        }
+                        else if (Double.Round(((onlineCount / printerList.Count()) * 100), 2) <= 50 && onlinePercent >= 40)
+                        {
+                            <MudProgressLinear Color="Color.Warning" Striped="true" Size="Size.Large" Value="@Double.Round(((onlineCount / printerList.Count()) * 100),2)" Class="my-7" />
+                        }
+                        else
+                        {
+                            <MudProgressLinear Color="Color.Error" Striped="true" Size="Size.Large" Value="@Double.Round(((onlineCount / printerList.Count()) * 100),2)" Class="my-7 " />
+                        }
+
+                    </MudPaper>
+                </MudItem>
+
+                <MudItem sm="6">
+                    Offline Count
+                    <MudPaper Elevation="0" Class="justify-center d-flex px-5 py-3 mud-border-primary" Outlined="true" Style="" Width="100%" Height="100px">
+
+                        <MudPaper Class="align-self-center" Elevation="0">
+                            <MudText Typo="Typo.h3"><MudIcon Icon="@Icons.Material.Filled.WifiTetheringError" Size="Size.Large" /> @offlinecount</MudText>
+                        </MudPaper>
+                    </MudPaper>
+                </MudItem>
+
+                <MudItem sm="6">
+                    Ping Avg.
+                    <MudPaper Elevation="0" Class="justify-center d-flex px-5 py-3 mud-border-primary" Outlined="true" Style="" Width="100%" Height="100px">
+
+                        <MudPaper Class="align-self-center" Elevation="0">
+                            @if (pingAVG < 300)
+                            {
+                                <MudText Typo="Typo.h3" Color="Color.Success"><MudIcon Icon="@Icons.Material.Filled.TrendingDown" Size="Size.Large" />@(pingAVG)ms</MudText>
+                            }else
+                            {
+                                <MudText Typo="Typo.h3" Color="Color.Error"><MudIcon Icon="@Icons.Material.Filled.TrendingUp" Size="Size.Large" />@(pingAVG)ms</MudText>
+                            }
+                        </MudPaper>
+                    </MudPaper>
+                </MudItem>
+
+                <MudItem sm="4">
+                    Model Types
+                    <MudPaper Elevation="0" Class="justify-center d-flex px-5 py-3 mud-border-primary" Style="@($"background:{Colors.LightGreen.Default};")" Width="100%" Height="100px">
+                       
+                        <MudPaper Class="align-self-center" Elevation="0" Style="background-color:transparent;">
+                            <MudText  Typo="Typo.h3"><MudIcon Icon="@Icons.Material.Filled.CatchingPokemon" Size="Size.Large" /> @ModelList.Count()</MudText>
+                        </MudPaper>
+                   </MudPaper>
+                </MudItem>
+
+                <MudItem sm="4">
+                    Manufactures
+                    <MudPaper Elevation="0" Class="justify-center d-flex px-5 py-3 mud-border-primary" Style="@($"background:{Colors.LightGreen.Default};")" Width="100%" Height="100px">
+
+                        <MudPaper Class="align-self-center" Elevation="0" Style="background-color:transparent;">
+                            <MudText Typo="Typo.h3"><MudIcon Icon="@Icons.Material.Filled.Copyright" Size="Size.Large" /> @ManuList.Count()</MudText>
+                        </MudPaper>
+                    </MudPaper>
+                </MudItem>
+
+                <MudItem sm="4">
+                    Plant Locations
+                    <MudPaper Elevation="0" Class="justify-center d-flex px-5 py-3 mud-border-primary" Style="@($"background:{Colors.LightGreen.Default};")" Width="100%" Height="100px">
+
+                        <MudPaper Class="align-self-center" Elevation="0" Style="background-color:transparent;">
+                            <MudText Typo="Typo.h3"><MudIcon Icon="@Icons.Material.Filled.LocationCity" Size="Size.Large" /> @plantList.Count()</MudText>
+                        </MudPaper>
+                    </MudPaper>
+                </MudItem>
+
+            </MudGrid>
+
+        </MudTabPanel>
+
+
+        <MudTabPanel Text="Detail View" Style="background-color:transparent">
+            <MudGrid>
+                <MudItem sm="12">
+                    <MudTabs Outlined="false" Rounded="true" AlwaysShowScrollButtons="false" Color="Color.Dark" Border="false"
+                             ApplyEffectsToContainer="true" Class="mt-1" PanelClass="pa-4">                    
+                        @foreach(var p in plantList)
+                        {
+
+                            if (GetOffLineList(p.PLANT_ID).Count() > 0)
+                            {
+                                <MudTabPanel Text="@p.NAME" BadgeData='"!"' BadgeColor="Color.Error">
+                                    <PlantStats ManuList="ManuList" plantList="plantList" printerList="printerList" plantID="@p.PLANT_ID"
+                                        offlineList="offlineList" />
+                                </MudTabPanel>
+                            }
+                            else
+                            {
+                                
+                                <MudTabPanel Text="@p.NAME">
+                                    <PlantStats ManuList="ManuList" plantList="plantList" printerList="printerList" plantID="@p.PLANT_ID"
+                                        offlineList="offlineList" />
+                                </MudTabPanel>
+                            }
+                            
+                        }
+
+                    </MudTabs>
+                </MudItem>
+            </MudGrid>
+
+        </MudTabPanel>
+
+
+    </MudTabs>
+
+    </AuthorizeView>
+       
+        
+
+
+
+    
+@code {
+
+    [Parameter]
+    public List<PRINTER_MAIN> printerList { get; set; }
+    [Parameter]
+    public List<PLANT> plantList { get; set; }
+    [Parameter]
+    public List<MODEL> ModelList { get; set; }
+    [Parameter]
+    public List<MANUFACTOR> ManuList { get; set; }
+    [Parameter]
+    public List<PingModel> offlineList { get; set; }
+
+    [Parameter]
+    public double onlineCount { get; set; }
+    [Parameter]
+    public double offlinecount { get; set; }
+    [Parameter]
+    public double onlinePercent { get; set; }
+
+
+    [Parameter]
+    public double total { get; set; }
+    [Parameter]
+    public double pingAVG { get; set; }
+    [Parameter]
+    public bool loading { get; set; }
+
+    public string selectPlant { get; set; }
+
+    public List<PingModel> GetOffLineList(string ID)
+    {
+        List<PingModel> newList = new();
+
+        foreach (var p in offlineList)
+        {
+            if (p.PRINTER_MAIN.PLANT_ID == ID)
+            {
+                newList.Add(p);
+            }
+        }
+
+        return newList;
+    }
+}

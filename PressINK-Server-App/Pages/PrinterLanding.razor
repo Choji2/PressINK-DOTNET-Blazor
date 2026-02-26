@@ -1,0 +1,177 @@
+﻿
+@page "/"
+
+@using PressINK_Server_App.Model.PrinterPingModel;
+@using PressINK_Server_App.Pages.Admin.Models
+@using PressINK_Server_App.Pages.Admin.PRINTER
+@using PressINK_Server_App.Pages.Info_Views
+@using PressINK_Server_App.Services;
+@using Web_scraper_practice_.Model.Printer_DB_Models;
+@using Web_scraper_practice_.Model.Printer_DB_Models.Sub_models;
+@inject ISnackbar Snackbar;
+@inject PingInjectServices PingInjectService
+@inject PrinterService PrinterServices
+
+
+<MudPaper Class=" align-self-center align-content-center " Elevation="0" Style="background-color:transparent">
+
+
+    <MudGrid>
+        <MudItem sm="12" Style="background-color:transparent">
+            <MudPaper Elevation="0" Style="background-color:transparent">
+                <MudItem>
+                    <Online_OverView                                  
+                    offlinecount="@offlinecount"
+                    onlineCount="@onlineCount"
+                    plantList="@plantList"
+                    printerList="@printerList"
+                    ModelList="@ModelList"
+                    ManuList="@ManuList"
+                    onlinePercent="@onlinePercent"
+                    total="@total"
+                    pingAVG="@pingAVG"
+                    offlineList="@offlineList"
+                    loading="@loading"/>                                       
+                </MudItem>
+            </MudPaper>
+        </MudItem>
+
+    </MudGrid>
+
+</MudPaper>
+
+
+@code{
+
+    List<PRINTER_MAIN> printerList = new();
+    List<PingModel> pingList = new();
+    List<PingModel> offlineList = new();
+
+    List<PLANT> plantList = new();
+    List<MODEL> ModelList = new();
+    List<MANUFACTOR> ManuList = new();
+
+    double total;
+    double onlineCount;
+    double offlinecount;
+    double onlinePercent;
+    double pingAVG;
+    bool loading = true;
+
+    System.Timers.Timer timer = new(interval: 120000);
+
+    //Initial load of variables and functions
+    protected override async Task OnInitializedAsync()
+    {
+
+        printerList = PrinterServices.GetPrinters();
+        plantList = PrinterServices.GetPlants();
+        ModelList = await PrinterServices.GetModels();
+        ManuList = PrinterServices.GetManufactors();
+        pingList = PingInjectService.GetPingList();
+        onlinePercent = (onlineCount / printerList.Count()) * 100;
+        SetData();
+        loading = false;
+        StateHasChanged();
+
+        timer.Elapsed += (sender, e) => HandleTimer();
+        timer.Start();
+
+    }
+
+    //Updates the variables on a time bases. 
+    public void HandleTimer()
+    {
+        loading = true;
+        // Revert variables back to 0;   
+        onlineCount = 0;
+        offlinecount = 0;
+        pingAVG = 0;
+        total = 0;
+        offlineList = new();
+        //reset variables
+        SetData();     
+        printerList = PrinterServices.GetPrinters();
+        plantList = PrinterServices.GetPlants();
+        ModelList = PrinterServices.GetModels().GetAwaiter().GetResult();
+        ManuList = PrinterServices.GetManufactors();
+        pingList = PingInjectService.GetPingList();
+        onlinePercent = (onlineCount / printerList.Count()) * 100;
+        
+        //Update the screen. 
+        loading = false;
+        InvokeAsync(() => {StateHasChanged();});
+        Show("Ping Updated...", 2);
+
+    }
+
+    //mudblazor popup 
+    void Show(string message, int select)
+    {
+        if (select == 1)
+        {
+            Snackbar.Configuration.PositionClass = Defaults.Classes.Position.BottomLeft;
+            Snackbar.Add(message, Severity.Warning);
+        }
+
+        else if (select == 2)
+        {
+            Snackbar.Configuration.PositionClass = Defaults.Classes.Position.BottomLeft;
+            Snackbar.Add(message, Severity.Normal);
+        }
+
+        else
+        {
+            Snackbar.Configuration.PositionClass = Defaults.Classes.Position.BottomLeft;
+            Snackbar.Add(message, Severity.Success);
+        }
+
+    }
+
+    //Sets the varaibles to be passed down. 
+    public void SetData()
+    {
+        foreach (var ping in pingList)
+        {
+            if (ping.Online)
+            {
+                onlineCount += 1;
+            }
+            else
+            {
+                offlineList.Add(ping);
+            }
+        }
+
+        total = pingList.Count();
+        offlinecount = total - onlineCount;
+        pingAVG = SetPingAVG(pingList);
+
+    }
+
+    //Returns calculations for avg. 
+    public double SetPingAVG(List<PingModel> pingList)
+    {
+        long total = 0;
+
+        foreach (var i in pingList)
+        {
+            total += i.response_time;
+        }
+
+        try
+        {
+            return Double.Round((double)(total / pingList.Count()), 2);
+        }
+        catch
+        {
+            return 0;
+        }
+
+
+    }
+
+
+
+
+}

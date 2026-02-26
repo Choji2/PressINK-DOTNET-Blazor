@@ -1,0 +1,24 @@
+﻿@using Web_scraper_practice_.Model.Printer_DB_Models
+
+    <MudItem> <MudText Typo="Typo.caption"><MudLink Href="@($"http://{printer.HOSTNAMEv4}")" target="_blank"> @printer.HOSTNAMEv4</MudLink></MudText></MudItem>
+    <MudItem>
+        <MudText Typo="Typo.caption">Asset: @printer.ASSET_NUMBER</MudText>
+    </MudItem>
+    <MudItem>
+        <MudText Typo="Typo.caption"> @printer.PLANT_ID: @printer.LOCATION</MudText>
+    </MudItem>
+    <MudItem>
+        <MudText Typo="Typo.caption"> Category: @printer.CATEGORY_ID</MudText>
+    </MudItem>
+    <MudItem>
+        <MudText Typo="Typo.caption"><MudText Typo="Typo.caption" Style="color:#8bc34a">@printer.MODEL_ID</MudText></MudText>
+    </MudItem>
+
+
+
+@code {
+
+    [Parameter]
+    public PRINTER_MAIN printer { get; set; }
+
+}

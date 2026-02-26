@@ -1,0 +1,85 @@
+﻿@using PressINK_Server_App.Model.PrinterAPIModels;
+
+@if (count == 0)
+{
+    <MudPaper Elevation="0" Style="background-color:transparent" Class="px-2 py-2 d-flex justify-center" Height="100%" Width="100%">
+
+        <MudPaper Elevation="0" Style="background-color:transparent">
+            <MudText Typo="Typo.h5" Color="Color.Primary">- No Issues to Display -</MudText>
+        </MudPaper>
+
+    </MudPaper>
+}else
+{
+<MudPaper Class="d-flex flex-wrap justify-center" Style="background-color:transparent" Elevation="0">
+    @foreach (var p in m5255List)
+    {
+        <MudPaper Class="mx-3 my-3 px-3 py-3  mud-border-error d-flex" Elevation="5" Outlined="true" Style="width:350px; background-color:transparent">
+
+
+                <MudItem>
+                    <MudText> @p.printerOBJ.QUE</MudText>
+
+                    @if (p.PrinterStats.ONLINE)
+                    {
+                        <MudText Typo="Typo.caption"> <MudIcon Icon="@Icons.Material.Filled.Circle" Color="Color.Success" Size="Size.Small" /> </MudText>
+
+                    }
+                    else
+                    {
+                        <MudText Typo="Typo.caption"> <MudIcon Icon="@Icons.Material.Filled.Circle" Color="Color.Error" Size="Size.Small" /> </MudText>
+                    }
+
+                    <MudText Typo="Typo.caption"> @p.printerOBJ.HOSTNAMEv4</MudText>
+                   <MudItem>
+                        <MudText Typo="Typo.caption">Category: @p.printerOBJ.CATEGORY_ID</MudText>
+                   </MudItem>
+                 
+                    <MudItem Class="">
+                        <MudText Typo="Typo.caption">Location: @p.printerOBJ.LOCATION</MudText>
+                    </MudItem>
+               
+                    
+               
+
+                <MudPaper Elevation="0" Style=" background-color:black" Class="my-1 px-2 py-1">
+                    <MudItem Class="">
+
+                        <MudText Typo="Typo.caption">Ink: @p.PrinterStats.INK_LEVEL%</MudText>
+                    </MudItem>
+                    
+
+                    <MudItem Class="">
+                        <MudText Typo="Typo.caption"> Maint: @p.PrinterStats.MAINT_KIT%</MudText>
+                    </MudItem>
+
+                    <MudItem Class="">
+                        <MudText Typo="Typo.caption"> Img: @p.PrinterStats.IMAGING%</MudText>
+                    </MudItem>
+                </MudPaper>
+                <MudItem>
+                    <MudText Typo="Typo.caption">Warning: @p.PrinterStats.WARNING</MudText>
+                </MudItem>
+                </MudItem>
+
+            
+           
+            
+           
+           
+
+        </MudPaper>
+
+    }
+</MudPaper>
+}
+
+
+@code {
+
+    [Parameter]
+    public List<PrinterInfoFull> m5255List { get; set; }
+    [Parameter]
+    public int count { get; set; }
+    
+}

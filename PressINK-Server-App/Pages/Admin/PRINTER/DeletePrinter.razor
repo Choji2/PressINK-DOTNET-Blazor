@@ -1,0 +1,116 @@
+﻿@page "/press-Admin/Printers/Delete/{printerIDSTR}";
+@using PressINK_Server_App.Services;
+@using DB_SCHEMA.Data.PrinterContexts;
+@using Microsoft.EntityFrameworkCore;
+@using Web_scraper_practice_.Model.Printer_DB_Models;
+@using Web_scraper_practice_.Model.Printer_DB_Models.Sub_models;
+@inject PrinterService printerSerivce;
+@inject NavigationManager NavigationManager;
+@inject ISnackbar Snackbar
+
+@attribute [Authorize(Roles = SD.GODEMODE)]
+
+<PageTitle>Printer</PageTitle>
+
+<MudPaper Class="d-flex  border-l-4 border-solid mud-border-primary pa-4 mb-5" Outlined="false" Elevation="0" Style="background-color:Transparent">
+    <br />
+    <MudText Typo="Typo.h2"><strong>Printers</strong></MudText>
+   
+    <br />
+    <br />
+</MudPaper>
+
+<MudPaper Class="" Outlined="false" Elevation="0" Style="background-color:transparent">
+    <MudCard Outlined="true" Style="width:50%;">
+        <MudCardContent>
+            <MudGrid>
+                <MudItem sm="12">
+                    <MudText Color="Color.Error"><strong>Printer ID: @printer.ID</strong></MudText>
+                </MudItem>
+
+                <MudItem sm="12">
+                    <MudText><strong>Hostname v4:</strong>@printer.HOSTNAMEv4</MudText>
+                </MudItem>
+
+                <MudItem sm="12">
+                    <MudText><strong>Asset#: </strong>@printer.ASSET_NUMBER</MudText>
+                </MudItem>
+
+                <MudItem sm="12">
+                    <MudText><strong>Queue: </strong>@printer.QUE</MudText>
+                </MudItem>
+
+                <MudItem sm="12">
+                    <MudText><strong>Location: </strong>@printer.LOCATION</MudText>
+                </MudItem>
+
+                <MudItem sm="12">
+                    <MudText><strong>Model: </strong>@printer.MODEL_ID</MudText>
+                </MudItem>
+
+                <MudItem sm="12">
+                    <MudText><strong>Category: </strong>@printer.CATEGORY_ID</MudText>
+                </MudItem>
+
+            </MudGrid>
+
+        </MudCardContent>
+    </MudCard>
+    <br />
+
+    
+</MudPaper>
+
+<MudButton Variant="Variant.Text" Color="Color.Error" OnClick="OnDelete">Remove</MudButton>
+<MudButton Variant="Variant.Text" Color="Color.Primary" @onclick="OnCancel">Cancel</MudButton>
+
+
+
+@code {
+
+    [Parameter]
+    public string printerIdSTR { get; set; }
+    public int intID { get; set; }
+    PRINTER_MAIN printer = new PRINTER_MAIN();
+
+    protected override async Task OnInitializedAsync()
+    {
+        intID = int.Parse(printerIdSTR);
+        printer = printerSerivce.GetPrinterByID(intID);
+    }
+
+
+    protected void OnDelete()
+    {
+        printerSerivce.DeletePrinter(printer.ID);
+        NavigationManager.NavigateTo($"{SD.IIS_NAV}/press-Admin/Printers");
+        Show($"Printer {printer.ID}|{printer.HOSTNAMEv4} has been deleted.", 1);
+    }
+
+    protected void OnCancel()
+    {
+        NavigationManager.NavigateTo($"{SD.IIS_NAV}/press-Admin/Printers");
+        Show($"No changes were saved.",2);
+
+    }
+
+    void Show(string message, int select)
+    {
+        if (select == 1)
+        {
+            Snackbar.Configuration.PositionClass = Defaults.Classes.Position.BottomLeft;
+            Snackbar.Add(message, Severity.Warning);
+        }
+        else if (select == 2)
+        {
+            Snackbar.Configuration.PositionClass = Defaults.Classes.Position.BottomLeft;
+            Snackbar.Add(message, Severity.Normal);
+        }
+        else
+        {
+            Snackbar.Configuration.PositionClass = Defaults.Classes.Position.BottomLeft;
+            Snackbar.Add(message, Severity.Success);
+        }
+    }
+
+}

@@ -1,0 +1,47 @@
+﻿@inherits LayoutComponentBase
+<MudDialogProvider />
+<MudSnackbarProvider />
+<MudThemeProvider IsDarkMode="true" />
+
+<PageTitle>Press-INK</PageTitle>
+
+
+<MudLayout >
+
+    
+        <MudDrawer @bind-Open="@open" Width="190px" Variant="@DrawerVariant.Persistent" 
+        Elevation="0" Style="background-color:transparent; padding-left:40px">
+        <MudPaper Class="d-flex justify-content-center" 
+        Elevation="0"
+        Style="height:100%; width:100%;background-color:transparent">
+
+            <MudPaper Class=" align-self-center" Style="background-color:transparent" Elevation="0" Outlined="false">
+                <MudItem>
+                    
+                    <NavMenu />
+                   
+                </MudItem>
+            </MudPaper>
+        </MudPaper>
+        </MudDrawer>
+  
+    
+    <MudMainContent >
+        
+
+        <MudContainer MaxWidth="MaxWidth.ExtraLarge">                     
+            @Body         
+        </MudContainer>
+    </MudMainContent>
+
+</MudLayout>
+
+    
+
+@code{
+
+    bool open = true;
+
+    
+
+}

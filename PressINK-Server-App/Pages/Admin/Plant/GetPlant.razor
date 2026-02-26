@@ -1,0 +1,103 @@
+﻿@page "/press-Admin/Plants"
+@using PressINK_Server_App.Shared.Auth
+@using Web_scraper_practice_.Model.Printer_DB_Models;
+@using PressINK_Server_App.Services;
+@using Web_scraper_practice_.Model.Printer_DB_Models.Sub_models;
+@inject PrinterService printerSerivce;
+@inject NavigationManager NavigationManager;
+@attribute [Authorize(Roles = SD.GODEMODE)]
+<PageTitle>Plant</PageTitle>
+
+<MudPaper Class="d-flex  border-l-4 border-solid mud-border-primary pa-4 mb-5" Outlined="false" Elevation="0" Style="background-color:Transparent">
+    <br />
+    <MudText Typo="Typo.h2"><strong>Plants</strong></MudText>
+    <LogoutButton/>
+    <br />
+    <br />
+</MudPaper>
+
+<MudLink Href="@($"{SD.IIS_NAV}/press-Admin")" Class="my-5">Back</MudLink>
+
+<MudTable Items="plantList" Hover="true" FixedHeader="true" Height="500px" Filter="new Func<PLANT,bool>(FilterFunc1)" SortLabel="Sort By">
+
+        <ToolBarContent>
+            <MudSpacer />
+            <MudSpacer />
+            <MudTextField @bind-Value="searchString1" Placeholder="Search+Enter" Adornment="Adornment.Start" AdornmentIcon="@Icons.Material.Filled.Search" IconSize="Size.Medium" Class="mt-0"></MudTextField>
+        </ToolBarContent>
+
+        <HeaderContent>
+        <MudTh><MudTableSortLabel SortBy="new Func<PLANT, object>(x=>x.PLANT_ID)">Plant ID</MudTableSortLabel></MudTh>
+        <MudTh><MudTableSortLabel SortBy="new Func<PLANT, object>(x=>x.NAME)">Name</MudTableSortLabel></MudTh>
+        <MudTh><MudTableSortLabel SortBy="new Func<PLANT, object>(x=>x.DESCP)">Desc.</MudTableSortLabel></MudTh>
+
+            <MudTh>
+                <MudButton Variant="Variant.Outlined" Color="Color.Success" @onclick="CreatePage">+ Add</MudButton>
+            </MudTh>
+
+        </HeaderContent>
+
+        <RowTemplate>
+
+            <MudTd DataLabel="ID">@context.PLANT_ID</MudTd>
+            <MudTd DataLabel="Name">@context.NAME</MudTd>
+            <MudTd DataLabel="Desc.">@context.DESCP</MudTd>
+
+
+            <MudTd DataLabel="Edit">
+
+                <MudButtonGroup Variant="Variant.Outlined" Color="Color.Primary">
+                    <MudButton Color="Color.Primary" OnClick="@(e=>UpdatePage(context.PLANT_ID))">Edit</MudButton>
+                    <MudButton Color="Color.Error" OnClick="@(e=>DeletePage(context.PLANT_ID))">Remove </MudButton>
+                </MudButtonGroup>
+
+            </MudTd>
+
+        </RowTemplate>
+
+    </MudTable>
+
+
+
+@code {
+    List<PLANT> plantList;
+
+    private string searchString1 = "";
+
+    protected override async Task OnInitializedAsync()
+    {
+        plantList = printerSerivce.GetPlants();
+    }
+
+    protected void UpdatePage(string id)
+    {
+        NavigationManager.NavigateTo($"{SD.IIS_NAV}/press-Admin/Plants/Update/{id}");
+    }
+    protected void DeletePage(string id)
+    {
+        NavigationManager.NavigateTo($"{SD.IIS_NAV}/press-Admin/Plants/Delete/{id}");
+    }
+
+
+    protected void CreatePage()
+    {
+        NavigationManager.NavigateTo($"{SD.IIS_NAV}/press-Admin/Plants/Create");
+    }
+
+
+    private bool FilterFunc1(PLANT element) => FilterFunc(element, searchString1);
+
+    private bool FilterFunc(PLANT element, string searchString)
+    {
+
+        if (string.IsNullOrWhiteSpace(searchString))
+            return true;
+        if (element.PLANT_ID.Contains(searchString, StringComparison.OrdinalIgnoreCase))
+            return true;
+        if (element.NAME.Contains(searchString, StringComparison.OrdinalIgnoreCase))
+            return true;
+
+        return false;
+    }
+
+}

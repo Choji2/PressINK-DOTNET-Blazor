@@ -1,0 +1,75 @@
+﻿@using PressINK_Server_App.Model.PrinterPingModel;
+@inject HttpClient httpClient
+@using System.Net.Http.Json
+
+
+    @if (offlineList.Count() > 0)
+    {
+        <MudTable @ref="@_table" Items="@_elements" Outlined="true" RowsPerPage="4" Hover="true"  
+            LoadingProgressColor="Color.Info" Style="max-width:100%; max-height:100%; background-color:transparent" Elevation="0"
+          Class="mud-border-primary">
+            <HeaderContent>
+                <MudTh>Que</MudTh>
+                <MudTh>Hostname</MudTh>
+                <MudTh>Category</MudTh>
+                <MudTh>Location</MudTh>
+            </HeaderContent>
+
+            <RowTemplate>
+                @if (context.PRINTER_MAIN.CATEGORY_ID == "PROD")
+                {
+                    <MudTd DataLabel="Nr"><MudText Color="Color.Error">@context.PRINTER_MAIN.QUE</MudText></MudTd>
+                    <MudTd DataLabel="Sign"><MudText Color="Color.Error">@context.PRINTER_MAIN.HOSTNAMEv4</MudText></MudTd>
+                    <MudTd DataLabel="Name"><MudText Color="Color.Error">@context.PRINTER_MAIN.CATEGORY_ID</MudText></MudTd>
+                    <MudTd DataLabel="Position"><MudText Color="Color.Error">@context.PRINTER_MAIN.LOCATION</MudText></MudTd>
+                }
+                else
+                {
+                    <MudTd DataLabel="Nr"><MudText Color="Color.Primary">@context.PRINTER_MAIN.QUE</MudText></MudTd>
+                    <MudTd DataLabel="Sign"><MudText Color="Color.Primary">@context.PRINTER_MAIN.HOSTNAMEv4</MudText></MudTd>
+                    <MudTd DataLabel="Name"><MudText Color="Color.Primary">@context.PRINTER_MAIN.CATEGORY_ID</MudText></MudTd>
+                    <MudTd DataLabel="Position"><MudText Color="Color.Primary">@context.PRINTER_MAIN.LOCATION</MudText></MudTd>
+                }
+            </RowTemplate>
+
+            <PagerContent>
+                <MudPagination SelectedChanged="PageChanged" Count="@((_table.GetFilteredItemsCount() + _table.RowsPerPage - 1) / _table.RowsPerPage)" Class="pa-4" />
+            </PagerContent>
+
+        </MudTable>
+    }
+    else
+    {
+    <MudText Typo="Typo.h4">No printers currently offline.</MudText>
+    }
+
+@code {
+
+    [Parameter]
+    public List<PingModel> offlineList { get; set; }
+    private MudTable<PingModel> _table;
+    private IEnumerable<PingModel> _elements = new List<PingModel>();
+
+    protected override async Task OnInitializedAsync()
+    {
+        _elements = offlineList;
+    }
+
+    private void PageChanged(int i)
+    {
+        _table.NavigateTo(i - 1);
+    }
+
+
+    
+    bool open;
+    Anchor anchor;
+
+    void OpenDrawer(Anchor anchor)
+    {
+        open = true;
+        this.anchor = anchor;
+    }
+
+    
+}

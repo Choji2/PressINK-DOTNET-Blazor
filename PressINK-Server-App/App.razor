@@ -1,0 +1,38 @@
+﻿@using PressINK_Server_App.Shared.Auth
+
+
+    <CascadingAuthenticationState>
+        <LoadingScreen>
+        <Router AppAssembly="@typeof(App).Assembly">
+            <Found Context="routeData">
+                <AuthorizeView>
+                    <Authorized>
+                        <AuthorizeRouteView RouteData="@routeData" DefaultLayout="@typeof(MainLayout)">
+
+                        </AuthorizeRouteView>
+                        <FocusOnNavigate RouteData="@routeData" Selector="h1" />
+                    </Authorized>
+                    <NotAuthorized>
+                        <Login />
+                    </NotAuthorized>
+
+                </AuthorizeView>
+
+            </Found>
+            <NotFound>
+                <AuthorizeView>
+                    <Authorized>
+                        <PageTitle>Not found</PageTitle>
+                        <LayoutView Layout="@typeof(MainLayout)">
+                            <_404 />
+                        </LayoutView>
+                    </Authorized>
+                    <NotAuthorized>
+                        <Login />
+                    </NotAuthorized>
+                </AuthorizeView>
+            </NotFound>
+        </Router>
+    </LoadingScreen>
+
+    </CascadingAuthenticationState>

@@ -1,0 +1,51 @@
+﻿@inject NavigationManager _navManager
+
+<AuthorizeView>
+    <MudNavMenu Bordered="true" Dense="true" Margin="Margin.Dense">
+        <div class=" d-flex" style="width:100%; justify-content:center">
+            <div>
+                <img src="images/press.png" height="40px"/>
+            </div>
+        </div>
+        <br/>
+
+        <MudNavLink @onclick="RoutePress" Icon="@Icons.Material.Filled.ViewSidebar" IconColor="Color.Primary"
+        Match="NavLinkMatch.All">Dashboard</MudNavLink>
+
+        <MudNavLink @onclick="RouteStats" Icon="@Icons.Material.Filled.Workspaces" IconColor="Color.Primary"
+                    Match="NavLinkMatch.All">Live Stats.</MudNavLink>
+
+        @if (context.User.IsInRole(SD.GODEMODE))
+        {
+            <MudNavLink @onclick="RouteAdmin" Match="NavLinkMatch.Prefix"
+                    Icon="@Icons.Material.Filled.Lock" IconColor="Color.Primary">
+                Admin
+            </MudNavLink>
+        }else{
+            <MudNavLink Disabled="true" Match="NavLinkMatch.Prefix"
+                    Icon="@Icons.Material.Filled.Lock" IconColor="Color.Primary">
+                Admin
+                </MudNavLink>
+        }
+
+    </MudNavMenu>
+</AuthorizeView>
+
+@code{
+
+    void RoutePress()
+    {
+        _navManager.NavigateTo($"{SD.IIS_NAV}/");
+    }
+    void RouteAdmin()
+    {
+        _navManager.NavigateTo($"{SD.IIS_NAV}/press-Admin");
+
+    }
+    void RouteStats()
+    {
+        _navManager.NavigateTo($"{SD.IIS_NAV}/press-LiveStats");
+
+    }
+
+}

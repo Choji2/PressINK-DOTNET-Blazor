@@ -1,0 +1,128 @@
+﻿@page "/press-Admin"
+@using PressINK_Server_App.Shared.Auth
+@attribute [Authorize(Roles = SD.GODEMODE)]
+@inject NavigationManager NavigationManager;
+
+<MudPaper Class="d-flex justify-end border-r-4 border-solid mud-border-primary pa-4 mb-3" Outlined="false" Elevation="0" Style="background-color:Transparent">
+    <br />
+    <MudText Typo="Typo.h2"><strong>Admin Home</strong></MudText>
+    <LogoutButton/>
+    <br />
+    <br />
+</MudPaper>
+
+<MudPaper Class="d-flex justify-center " Outlined="false" Elevation="0" Style="background-color:Transparent">
+    
+
+    <MudGrid Style="width:90%" Class="align-self-center">
+
+        <MudItem sm="6">
+            <MudCard Outlined="true">
+                <MudCardContent Class="align-content-center">
+                    <MudButton Variant="Variant.Outlined" Color="Color.Primary" OnClick="PrinterRoute">
+                        Printers
+                        <MudIcon Icon="@Icons.Material.Filled.Print"></MudIcon>
+                    </MudButton>
+                    <MudText Typo="Typo.caption"> Modify and create production and admin printers. </MudText>
+                </MudCardContent>
+            </MudCard>
+        </MudItem>
+
+
+        <MudItem sm="6">
+            <MudCard Outlined="true">
+                <MudCardContent Class="align-content-center">
+                    <MudButton Variant="Variant.Outlined" Color="Color.Primary" OnClick="ModelRoute">
+                        Models
+                        <MudIcon Icon="@Icons.Material.Filled.Analytics"></MudIcon>
+                    </MudButton>
+                    <MudText Typo="Typo.caption"> Modify models of existing manufacturers. </MudText>
+                </MudCardContent>
+            </MudCard>
+        </MudItem>
+
+        <MudItem sm="6">
+            <MudCard Outlined="true">
+                <MudCardContent Class="align-content-center">
+                    <MudButton Variant="Variant.Outlined" Color="Color.Primary" OnClick="PlantRoute">
+                        Plants
+                        <MudIcon Icon="@Icons.Material.Filled.LocationCity"></MudIcon>
+                    </MudButton>
+                    <MudText Typo="Typo.caption">Create locations to assign to printers.</MudText>
+                </MudCardContent>
+            </MudCard>
+        </MudItem>
+
+        <MudItem sm="6">
+            <MudCard Outlined="true">
+                <MudCardContent Class="align-content-center">
+                    <MudButton Variant="Variant.Outlined" Color="Color.Primary" OnClick="ManuRoute">
+                        Manufacturers
+                        <MudIcon Icon="@Icons.Material.Filled.Copyright"></MudIcon>
+                    </MudButton>
+                    <MudText Typo="Typo.caption"> Add and update manufacturers of printers. </MudText>
+                </MudCardContent>
+            </MudCard>
+
+        </MudItem>
+
+       
+    </MudGrid>
+</MudPaper>
+
+
+
+
+
+
+
+
+
+
+
+
+      
+
+@code {
+
+    [CascadingParameter]
+    public Task<AuthenticationState> AuthenticationState { get; set; }
+
+    protected override async Task OnInitializedAsync()
+    {
+        var authState = await AuthenticationState;
+        if (!authState.User.Identity.IsAuthenticated)
+        {
+            var uri = new Uri(NavigationManager.Uri);
+            NavigationManager.NavigateTo($"/identity/account/login?returnUrl={uri.LocalPath}", forceLoad:true);
+        }      
+    }
+
+    private void ModelRoute()
+    {
+        NavigationManager.NavigateTo($"{SD.IIS_NAV}/press-Admin/Models");
+    }
+
+    private void PrinterRoute()
+    {
+        NavigationManager.NavigateTo($"{SD.IIS_NAV}/press-Admin/Printers");
+    }
+
+    private void PlantRoute()
+    {
+        NavigationManager.NavigateTo($"{SD.IIS_NAV}/press-Admin/Plants");
+    }
+
+    private void ManuRoute()
+    {
+        NavigationManager.NavigateTo($"{SD.IIS_NAV}/press-Admin/Manufactors");
+    }
+
+    private void UserRoute()
+    {
+        NavigationManager.NavigateTo($"{SD.IIS_NAV}/press-Admin/Users");
+    }
+
+
+
+}

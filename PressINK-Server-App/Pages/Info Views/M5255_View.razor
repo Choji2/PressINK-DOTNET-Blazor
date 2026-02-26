@@ -1,0 +1,166 @@
+﻿
+@using PressINK_Server_App.Services;
+@using Web_scraper_practice_.Model.Printer_DB_Models.Sub_models;
+@using PressINK_Server_App.Model.PrinterAPIModels;
+@inject ISnackbar Snackbar;
+
+-@plantTitle View: @IssueList.Count Issue(s)
+<MudPaper Height="250px" Width="100%" Outlined="true"  Class="mud-border-primary overflow-scroll" Style="background-color:transparent" Elevation="0">
+
+    <M5255OBJView_2 m5255List="IssueList" count="count"/>
+
+
+</MudPaper>
+
+<MudGrid>
+
+    <MudItem sm="6">
+        <MudPaper Class=" d-flex px-2 mt-2 " Style="background-color:transparent;" Elevation="0">
+            <MudPaper Elevation="0" Style="background-color:transparent;">
+                <MudRadioGroup T="string" @bind-SelectedOption="@radioOption" @onclick="RadioSelectUpdate">
+                    <MudRadio Option="radioDefault" Color="Color.Primary" Dense="true" UnCheckedColor="Color.Default">All</MudRadio>
+                    @foreach (var c in categoryList)
+                    {
+                        <MudRadio Option="c.CATEGORY_ID" Color="Color.Primary" Dense="true" UnCheckedColor="Color.Default">@c.NAME</MudRadio>
+                    }
+                </MudRadioGroup>
+            </MudPaper>
+        </MudPaper>
+    </MudItem>
+
+    <MudItem sm="6">
+        <MudPaper Height="100%" Width="100%" Style="background-color:transparent" Elevation="0" Class="d-flex flex-wrap flex-grow-1 gap-4 justify-end align-content-end">
+           
+            <MudPaper Width="130px" Height="20px" Class="d-flex flex-wrap flex-grow-1 gap-4 justify-end align-content-end" Style="background-color:transparent" Elevation="0">
+                -@Title View
+            </MudPaper>
+        </MudPaper>
+    </MudItem>
+
+</MudGrid>
+
+<MudPaper Height="350px" Width="100%" Outlined="true" Class="mud-border-primary overflow-scroll" Style="background-color:transparent" Elevation="0">
+   
+ 
+     
+
+      
+   <M5255OBJView_1 m5255List="m5255CatList" count="count2"/>
+
+    
+
+</MudPaper>
+
+   
+
+@code 
+{
+    [Parameter]
+    public string plantTitle{ get; set; }
+
+
+    [Parameter]
+    public List<PrinterInfoFull> m5255List { get; set; }
+
+    public List<PrinterInfoFull> m5255CatList { get; set; }
+    public List<PrinterInfoFull> IssueList { get; set; }
+
+    public int count = 0;
+    public int count2 = 0;
+
+    bool loading = true; 
+
+    [Parameter]
+    public List<CATEGORY> categoryList { get; set; }
+    System.Timers.Timer timer = new(interval: 1000);
+
+    string radioDefault = "ALL";
+    string radioOption;
+    string Title;
+
+    protected override async Task OnInitializedAsync()
+    {
+        Title = radioDefault;
+        radioOption = radioDefault;
+        RadioSelectUpdate();
+        timer.Elapsed += (sender, e) => HandleTimer();
+        timer.Start();
+    }
+
+    public void HandleTimer()
+    {
+        RadioSelectUpdate();
+        InvokeAsync(() => { StateHasChanged(); });
+    }
+
+
+    void RadioSelectUpdate()
+    {
+        loading = true;
+        InvokeAsync(() => { StateHasChanged(); });
+        Title = radioOption;
+        if (radioOption != "ALL")
+        {
+            filter_List(radioOption);
+        }
+        else
+        {
+            m5255CatList = m5255List;
+            if (m5255CatList == null)
+            {
+                count2 = 0;
+            }
+            else
+            {
+                count2 = m5255CatList.Count;
+            }
+
+        }
+
+
+        SetErrorList();
+        loading = false;
+        InvokeAsync(() => { StateHasChanged(); });
+    }
+
+    public void filter_List(string catID)
+    {
+
+        try
+        {
+            m5255CatList = m5255List.Where(x => x.printerOBJ.CATEGORY_ID.Equals(catID)).ToList();
+            count2 = m5255CatList.Count;
+        }
+        catch
+        {
+            
+        }
+    }
+
+
+    public void SetErrorList()
+    {
+        IssueList = new();
+        if (m5255List != null)
+        {
+            foreach (var p in m5255List)
+            {
+                if (p.PrinterStats.ONLINE == false)
+                {
+                    IssueList.Add(p);
+                }
+                else if (p.PrinterStats.INK_LEVEL < 25 || p.PrinterStats.MAINT_KIT < 25 || p.PrinterStats.IMAGING < 25)
+                {
+
+                    IssueList.Add(p);
+                }
+
+                else if (!p.PrinterStats.WARNING.Contains("") && !p.PrinterStats.WARNING.Contains("No warnings exist on the device.") && !p.PrinterStats.MESSAGES.Contains("No alerts exist on the device."))
+                {
+                    IssueList.Add(p);
+                }
+            }
+        }
+        count = IssueList.Count;
+    }
+}

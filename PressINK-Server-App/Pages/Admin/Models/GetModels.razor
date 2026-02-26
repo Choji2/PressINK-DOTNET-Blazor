@@ -1,0 +1,104 @@
+﻿@page "/press-Admin/Models"
+@using PressINK_Server_App.Shared.Auth
+@using Web_scraper_practice_.Model.Printer_DB_Models;
+@using PressINK_Server_App.Services;
+@using Web_scraper_practice_.Model.Printer_DB_Models.Sub_models;
+@inject PrinterService printerSerivce;
+@inject NavigationManager NavigationManager;
+@attribute [Authorize(Roles = SD.GODEMODE)]
+
+<PageTitle>Model</PageTitle>
+
+<MudPaper Class="d-flex  border-l-4 border-solid mud-border-primary pa-4 mb-5" Outlined="false" Elevation="0" Style="background-color:Transparent">
+    <br />
+    <MudText Typo="Typo.h2"><strong>Models</strong></MudText>
+    <LogoutButton/>
+    <br />
+    <br />
+</MudPaper>
+
+<MudLink Href="@($"{SD.IIS_NAV}/press-Admin")" Class="my-5">Back</MudLink>
+
+<MudTable Items="modelList" Hover="true" FixedHeader="true" Height="500px" Filter="new Func<MODEL,bool>(FilterFunc1)" SortLabel="Sort By">
+    <ToolBarContent>
+        <MudSpacer />
+        <MudSpacer />
+        <MudTextField @bind-Value="searchString1" Placeholder="Search+Enter" Adornment="Adornment.Start" AdornmentIcon="@Icons.Material.Filled.Search" IconSize="Size.Medium" Class="mt-0"></MudTextField>
+    </ToolBarContent>
+
+    <HeaderContent>
+        <MudTh><MudTableSortLabel SortBy="new Func<MODEL, object>(x=>x.MODEL_ID)">Plant ID</MudTableSortLabel></MudTh>
+        <MudTh><MudTableSortLabel SortBy="new Func<MODEL, object>(x=>x.MODEL_NAME)">Name</MudTableSortLabel></MudTh>
+        <MudTh><MudTableSortLabel SortBy="new Func<MODEL, object>(x=>x.MANUFACTOR_ID)">Manufacturer ID</MudTableSortLabel>Manufacturer ID</MudTh>
+        <MudTh>Desc.</MudTh>
+
+
+        <MudTh>
+            <MudButton Variant="Variant.Outlined" Color="Color.Success" @onclick="CreatePage">+ Add</MudButton>
+        </MudTh>
+
+    </HeaderContent>
+
+    <RowTemplate>
+
+        <MudTd DataLabel="ID">@context.MODEL_ID</MudTd>
+        <MudTd DataLabel="Name">@context.MODEL_NAME</MudTd>
+        <MudTd DataLabel="Manufacturer">@context.MANUFACTOR_ID</MudTd>
+        <MudTd DataLabel="Desc.">@context.DESCP</MudTd>
+
+
+        <MudTd DataLabel="Edit">
+
+            <MudButtonGroup Variant="Variant.Outlined" Color="Color.Primary">
+                <MudButton Color="Color.Primary" OnClick="@(e=>UpdatePage(context.MODEL_ID))">Edit</MudButton>
+                <MudButton Color="Color.Error" OnClick="@(e=>DeletePage(context.MODEL_ID))">Remove </MudButton>
+            </MudButtonGroup>
+
+        </MudTd>
+
+    </RowTemplate>
+
+</MudTable>
+
+
+@code {
+    List<MODEL> modelList;
+
+    private string searchString1 = "";
+
+    protected override async Task OnInitializedAsync()
+    {
+        modelList = await printerSerivce.GetModels();
+    }
+
+    protected void UpdatePage(string id)
+    {
+        NavigationManager.NavigateTo($"{SD.IIS_NAV}/press-Admin/Models/Update/{id}");
+    }
+    protected void DeletePage(string id)
+    {
+        NavigationManager.NavigateTo($"{SD.IIS_NAV}/press-Admin/Models/Delete/{id}");
+    }
+
+    protected void CreatePage()
+    {
+        NavigationManager.NavigateTo($"{SD.IIS_NAV}/press-Admin/Models/Create");
+    }
+
+    private bool FilterFunc1(MODEL element) => FilterFunc(element, searchString1);
+
+    private bool FilterFunc(MODEL element, string searchString)
+    {
+
+        if (string.IsNullOrWhiteSpace(searchString))
+            return true;
+        if (element.MODEL_ID.Contains(searchString, StringComparison.OrdinalIgnoreCase))
+            return true;
+        if (element.MODEL_NAME.Contains(searchString, StringComparison.OrdinalIgnoreCase))
+            return true;
+        if (element.MANUFACTOR_ID.Contains(searchString, StringComparison.OrdinalIgnoreCase))
+            return true;
+
+        return false;
+    }
+}

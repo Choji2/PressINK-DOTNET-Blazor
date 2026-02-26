@@ -1,0 +1,123 @@
+﻿@page "/press-Admin/Plants/Create"
+@using PressINK_Server_App.Services;
+
+@using DB_SCHEMA.Data.PrinterContexts;
+@using Microsoft.EntityFrameworkCore;
+@using Web_scraper_practice_.Model.Printer_DB_Models;
+@using Web_scraper_practice_.Model.Printer_DB_Models.Sub_models;
+@inject PrinterService printerSerivce;
+@inject NavigationManager NavigationManager;
+@inject ISnackbar Snackbar;
+@attribute [Authorize(Roles = SD.GODEMODE)]
+
+
+<PageTitle>Plant</PageTitle>
+
+<MudPaper Class="d-flex  border-l-4 border-solid mud-border-primary pa-4 mb-5" Outlined="false" Elevation="0" Style="background-color:Transparent">
+    <br />
+    <MudText Typo="Typo.h2"><strong>Plants</strong></MudText>
+    <br />
+    <br />
+</MudPaper>
+
+<MudPaper Class="" Outlined="false" Elevation="0" Style="background-color:transparent">
+    <MudCard Outlined="true" Style="width:50%;">
+        <MudCardContent>
+            <EditForm Model="plant" OnValidSubmit="HandleSubmit">
+
+                <DataAnnotationsValidator />
+                @if (success)
+                {
+                    <MudText Color="@Color.Success"></MudText>
+                }
+                else
+                {
+                    <MudText Color="Color.Error">
+                        <ValidationSummary />
+                    </MudText>
+                }
+
+
+                <MudGrid>
+                    <MudItem>
+                        <MudTextField Label="Plant ID" @bind-Value="@plant.PLANT_ID" For="@(()=>plant.PLANT_ID)" />
+                    </MudItem>
+
+                    <MudItem>
+                        <MudTextField Label="Name" @bind-Value="@plant.NAME" For="@(()=>plant.NAME)" />
+                    </MudItem>
+
+                    <MudItem>
+                        <MudTextField Label="Desc." @bind-Value="@plant.DESCP" For="@(()=>plant.DESCP)" />
+                    </MudItem>
+                </MudGrid>
+
+                <br />
+
+                <MudText>
+                    *ID will be filled with random vale if not unique.
+                </MudText>
+
+                <MudButton Variant="Variant.Text" Color="Color.Primary" ButtonType="ButtonType.Submit">Create</MudButton>
+                <MudButton Variant="Variant.Text" Color="Color.Primary" @onclick="Cancel">Cancel</MudButton>
+
+            </EditForm>
+
+
+        </MudCardContent>
+    </MudCard>
+
+</MudPaper>
+
+
+@code {
+
+
+    PLANT plant = new();
+    bool success;
+
+    protected override async Task OnInitializedAsync()
+    {
+
+    }
+
+    private void HandleSubmit(EditContext editContext)
+    {
+        var newPlant = (PLANT)editContext.Model;
+        success = true;
+        printerSerivce.AddPlant(newPlant);
+        NavigationManager.NavigateTo($"{SD.IIS_NAV}/press-Admin/Plants");
+        Show($"Plant {plant.PLANT_ID} has been created.",3);
+
+    }
+
+    private void Cancel()
+    {
+        NavigationManager.NavigateTo($"{SD.IIS_NAV}/press-Admin/Plants");
+        Show(SD.Cancel_sandbox, 2);
+    }
+
+
+    void Show(string message, int select)
+    {
+        if (select == 1)
+        {
+            Snackbar.Configuration.PositionClass = Defaults.Classes.Position.BottomLeft;
+            Snackbar.Add(message, Severity.Warning);
+        }
+
+        else if (select == 2)
+        {
+            Snackbar.Configuration.PositionClass = Defaults.Classes.Position.BottomLeft;
+            Snackbar.Add(message, Severity.Normal);
+        }
+
+        else
+        {
+            Snackbar.Configuration.PositionClass = Defaults.Classes.Position.BottomLeft;
+            Snackbar.Add(message, Severity.Success);
+        }
+
+    }
+
+}

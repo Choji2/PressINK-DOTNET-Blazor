@@ -1,0 +1,41 @@
+{
+  "Version": 1,
+  "WorkspaceRootPath": "C:\\Users\\vac59186\\source\\repos\\Choji2\\PressINK-DOTNET-Blazor\\",
+  "Documents": [
+    {
+      "AbsoluteMoniker": "D:0:0:{760B598C-035F-43D2-AAB6-E837F4A5F762}|AAP_PRINT_Dashboard\\PressINK-Server-App.csproj|c:\\users\\vac59186\\source\\repos\\choji2\\pressink-dotnet-blazor\\aap_print_dashboard\\sd.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{760B598C-035F-43D2-AAB6-E837F4A5F762}|AAP_PRINT_Dashboard\\PressINK-Server-App.csproj|solutionrelative:aap_print_dashboard\\sd.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    }
+  ],
+  "DocumentGroupContainers": [
+    {
+      "Orientation": 0,
+      "VerticalTabListWidth": 256,
+      "DocumentGroups": [
+        {
+          "DockedWidth": 200,
+          "SelectedChildIndex": 0,
+          "Children": [
+            {
+              "$type": "Document",
+              "DocumentIndex": 0,
+              "Title": "SD.cs",
+              "DocumentMoniker": "C:\\Users\\vac59186\\source\\repos\\Choji2\\PressINK-DOTNET-Blazor\\AAP_PRINT_Dashboard\\SD.cs",
+              "RelativeDocumentMoniker": "AAP_PRINT_Dashboard\\SD.cs",
+              "ToolTip": "C:\\Users\\vac59186\\source\\repos\\Choji2\\PressINK-DOTNET-Blazor\\AAP_PRINT_Dashboard\\SD.cs",
+              "RelativeToolTip": "AAP_PRINT_Dashboard\\SD.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAA0AAAAPAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-02-26T18:27:29.062Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Bookmark",
+              "Name": "ST:0:0:{aa2115a1-9712-457b-9047-dbb71ca2cdd2}"
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

@@ -1,0 +1,133 @@
+﻿@using PressINK_Server_App.Model.Auth._Models
+@using PressINK_Server_App.Services.Auth.Services
+@using Microsoft.Extensions.Options
+
+@inject NavigationManager navManager
+@inject Blazored.LocalStorage.ILocalStorageService localStorage
+@inject IOptions<JwtSettings> JwtSettings
+@inject AuthenticationStateProvider AuthenticationStateProvider
+@inject IJSRuntime JSRuntime
+@inject IHttpContextAccessor HttpContextAccessor
+
+<style>
+    body {
+        --mud-palette-success: #8bc34a;
+
+      
+        }
+</style>
+
+<PageTitle>Login</PageTitle>
+<MudThemeProvider @bind-IsDarkMode="@_isDarkMode" Theme="_theme" />
+
+<MudLayout Class=" mt-5">
+
+    <MudContainer MaxWidth="MaxWidth.Medium">
+        <MudSpacer />
+       
+        <MudGrid Style=" background-image: url('images/abstract.jpg');background-attachment:fixed; background-position:center; background-size:contain;border-radius: 15px;" Class="mt-8">
+            <MudItem lg="5" Style="d-flex justify-center flex-grow-1 gap-4 p-4">
+                <MudCard Class="p-2 mt-2 " Style="border-radius: 15px;" Elevation="0">
+                    <MudCardContent >
+                        <MudText Typo="Typo.h1">Login</MudText>
+                        <h2 class=" text-center" style="color:#8bc34a;">Welcome To Press-INK.</h2>
+                        <br/>
+                        <EditForm Model="@loginModel" OnValidSubmit="HandleLogin">
+
+                            <MudTextField @bind-Value="@loginModel.Username" Label="Username" Variant="Variant.Outlined" InputType="InputType.Text" />
+                            <br />
+                            <MudTextField @bind-Value="@loginModel.Password" Label="Password" Variant="Variant.Outlined" InputType="@PasswordInput" Adornment="Adornment.End" AdornmentIcon="@PasswordInputIcon" OnAdornmentClick="ButtonTestclick" AdornmentAriaLabel="Show Password" />
+
+                            <MudCardActions>
+                                @if (!loading)
+                                {
+                                    <MudButton Class="mt-2" ButtonType="ButtonType.Submit" FullWidth=true Variant="Variant.Filled" Color="Color.Success">Login</MudButton>
+                                }
+                                else
+                                {
+                                    <MudProgressLinear Color="Color.Primary" Indeterminate="true" Class="my-7" />
+                                }
+                            </MudCardActions>
+
+                            <MudText Color="Color.Error">
+
+                                <DataAnnotationsValidator />
+                                <ValidationSummary />
+
+                            </MudText>
+                            @if (loginFailed)
+                            {
+                                <MudText Color="Color.Error">Login Failed</MudText>
+                            }
+                        </EditForm>
+
+                    </MudCardContent>
+
+                </MudCard>
+            </MudItem> 
+
+        </MudGrid>
+
+    </MudContainer>
+</MudLayout>
+
+
+
+
+
+    @code {
+        private MudTheme _theme = new();
+        private bool _isDarkMode = true;
+
+        private LoginModel loginModel = new();
+        private bool loginFailed = false;
+        private string failmesage = "";
+        private bool loading = false;
+        string PasswordInputIcon = Icons.Material.Filled.VisibilityOff;
+        InputType PasswordInput = InputType.Password;
+        bool isShow;
+
+
+        void ButtonTestclick()
+        {
+        @if (isShow)
+        {
+            isShow = false;
+            PasswordInputIcon = Icons.Material.Filled.VisibilityOff;
+            PasswordInput = InputType.Password;
+        }
+        else
+        {
+            isShow = true;
+            PasswordInputIcon = Icons.Material.Filled.Visibility;
+            PasswordInput = InputType.Text;
+        }
+        }
+
+        protected override async Task OnInitializedAsync()
+        {
+
+        }
+
+        private async Task HandleLogin()
+        {
+
+        loginFailed = false;
+        loading = true;
+        var attempt = await ((AuthenticationHandler)AuthenticationStateProvider).Login(loginModel.Username, loginModel.Password);
+        if (!string.IsNullOrEmpty(attempt))
+        {
+            await localStorage.SetItemAsync(JwtSettings.Value.TokenName, attempt);
+            StateHasChanged();
+
+            await JSRuntime.InvokeVoidAsync("window.location.assign", $"{SD.IIS_NAV}/");
+
+        }
+        else
+        {
+            loginFailed = true;
+            loading = false;
+
+        }
+    }
+}

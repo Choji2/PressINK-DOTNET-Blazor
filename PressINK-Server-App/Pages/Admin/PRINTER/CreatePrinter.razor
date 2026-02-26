@@ -1,0 +1,164 @@
+﻿@page "/press-Admin/Printers/Create"
+@using PressINK_Server_App.Services;
+@attribute [Authorize(Roles = SD.GODEMODE)]
+@using DB_SCHEMA.Data.PrinterContexts;
+@using Microsoft.EntityFrameworkCore;
+@using Web_scraper_practice_.Model.Printer_DB_Models;
+@using Web_scraper_practice_.Model.Printer_DB_Models.Sub_models;
+@inject PrinterService printerSerivce;
+@inject NavigationManager NavigationManager;
+@inject ISnackbar Snackbar;
+
+
+
+<PageTitle>Printer</PageTitle>
+
+<MudPaper Class="d-flex  border-l-4 border-solid mud-border-primary pa-4 mb-5" Outlined="false" Elevation="0" Style="background-color:Transparent">
+    <br />
+    <MudText Typo="Typo.h2"><strong>Printers</strong></MudText>
+    
+    <br />
+    <br />
+</MudPaper>
+
+<MudPaper Class="" Outlined="false" Elevation="0" Style="background-color:transparent">
+
+    <MudCard Outlined="true" Style="width:50%;">
+        <MudCardContent>
+            <EditForm Model="printer" OnValidSubmit="HandleSubmit">
+
+                <DataAnnotationsValidator />
+                @if (success)
+                {
+                    <MudText Color="@Color.Success"></MudText>
+                }
+                else
+                {
+                    <MudText Color="Color.Error">
+                        <ValidationSummary />
+                    </MudText>
+                }
+
+
+                <MudGrid>
+                    <MudItem>
+                        <MudTextField Label="Hostname Address.v4" @bind-Value="@printer.HOSTNAMEv4" For="@(()=>printer.HOSTNAMEv4)" />
+                    </MudItem>
+
+                    <MudItem>
+                        <MudTextField Label="Asset#" @bind-Value="@printer.ASSET_NUMBER" For="@(()=>printer.ASSET_NUMBER)" />
+                    </MudItem>
+
+                    <MudItem>
+                        <MudTextField Label="Queue" @bind-Value="@printer.QUE" For="@(()=>printer.QUE)" />
+                    </MudItem>
+
+                    <MudItem>
+                        <MudTextField Label="Location" @bind-Value="@printer.LOCATION" For="@(()=>printer.LOCATION)" />
+                    </MudItem>
+
+                    <MudItem sm="4">
+                        <MudSelect T="string" Label="Plant ID" AnchorOrigin="Origin.BottomCenter" @bind-Value="@printer.PLANT_ID" For="@(()=>printer.PLANT_ID)">
+                            <MudSelectItem Value="plantList[0].PLANT_ID">Default...</MudSelectItem>
+                            @foreach (var plant in plantList)
+                            {
+                                <MudSelectItem Value="@plant.PLANT_ID">@plant.PLANT_ID</MudSelectItem>
+                            }
+                        </MudSelect>
+                    </MudItem>
+
+                    <MudItem sm="4">
+                        <MudSelect T="string" Label="Model ID" AnchorOrigin="Origin.BottomCenter" @bind-Value="@printer.MODEL_ID">
+                            <MudSelectItem Value="modelList[0].MODEL_ID">Default...</MudSelectItem>
+                            @foreach (var model in modelList)
+                            {
+                                <MudSelectItem Value="@model.MODEL_ID">@model.MODEL_ID</MudSelectItem>
+                            }
+                        </MudSelect>
+                    </MudItem>
+
+                    <MudItem sm="4">
+                        <MudSelect T="string" Label="Category" AnchorOrigin="Origin.BottomCenter" @bind-Value="@printer.CATEGORY_ID">
+                            <MudSelectItem Value="catList[0].CATEGORY_ID">Default...</MudSelectItem>
+                            @foreach (var cat in catList)
+                            {
+                                <MudSelectItem Value="@cat.CATEGORY_ID">@cat.CATEGORY_ID</MudSelectItem>
+                            }
+                        </MudSelect>
+                    </MudItem>
+
+                </MudGrid>
+
+                <br />
+                <MudText>
+                    *queue will be filled with random value if not unique.
+                </MudText>
+                <MudButton Variant="Variant.Text" Color="Color.Primary" ButtonType="ButtonType.Submit">Create</MudButton>
+                <MudButton Variant="Variant.Text" Color="Color.Primary" @onclick="Cancel">Cancel</MudButton>
+
+            </EditForm>
+
+
+        </MudCardContent>
+    </MudCard>
+
+
+</MudPaper>
+
+
+@code {
+    bool success;
+
+    public List<MODEL> modelList = new() { new() { MODEL_NAME = string.Empty } };
+    public List<CATEGORY> catList = new() { new() { CATEGORY_ID = string.Empty, DESCRIPTION = string.Empty, NAME = string.Empty } };
+    public List<PLANT> plantList = new() { new() { DESCP = "", NAME = "", PLANT_ID = "" } };
+
+
+    PRINTER_MAIN printer = new PRINTER_MAIN();
+
+    protected override async Task OnInitializedAsync()
+    {
+        modelList = await printerSerivce.GetModels();
+        catList = printerSerivce.GetCategories();
+        plantList = printerSerivce.GetPlants();
+    }
+
+    private void HandleSubmit(EditContext editContext)
+    {
+        var newPrinter = (PRINTER_MAIN)editContext.Model;
+
+        success = true;
+        printerSerivce.AddPrinter(newPrinter);
+        NavigationManager.NavigateTo($"{SD.IIS_NAV}/press-Admin/Printers");
+        Show($"Printer {printer.ID}|{printer.HOSTNAMEv4} has been created.", 3);
+
+    }
+
+    private void Cancel()
+    {
+        NavigationManager.NavigateTo($"{SD.IIS_NAV}/press-Admin/Printers");
+        Show("No changes were saved", 2);
+    }
+
+    void Show(string message, int select)
+    {
+        if (select == 1)
+        {
+            Snackbar.Configuration.PositionClass = Defaults.Classes.Position.BottomLeft;
+            Snackbar.Add(message, Severity.Warning);
+        }
+
+        else if (select == 2)
+        {
+            Snackbar.Configuration.PositionClass = Defaults.Classes.Position.BottomLeft;
+            Snackbar.Add(message, Severity.Normal);
+        }
+
+        else
+        {
+            Snackbar.Configuration.PositionClass = Defaults.Classes.Position.BottomLeft;
+            Snackbar.Add(message, Severity.Success);
+        }
+    }
+
+}

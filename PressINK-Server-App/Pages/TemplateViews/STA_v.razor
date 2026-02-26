@@ -1,0 +1,48 @@
+﻿@using PressINK_Server_App.Model.API_Data.Return_Types
+@using PressINK_Server_App.Model.PrinterAPIModels
+@using System.Reflection
+@using PressINK_Server_App.Pages.TemplateViews.sub_view
+@using Web_scraper_practice_.Model.Printer_DB_Models
+
+
+<style>
+    body{
+        --mud-palette-success: #8bc34a
+    }
+</style>
+
+<MudPaper Class=" " Elevation="5" Outlined="false" Style="background-color:transparent;width:95%">
+
+    <MudGrid Style="align-items:center" Class="px-2 py-2">
+
+        <MudItem sm="12">
+            <StatusNTitle que="@printer.QUE" status="@stats.STATUS" />
+        </MudItem>
+
+        <MudItem Style="width:200px" sm="6">
+            <Common_Info printer="printer" />
+        </MudItem>
+
+    </MudGrid>
+</MudPaper>
+
+
+
+@code {
+
+    [Parameter]
+    public STA stats { get; set; }
+
+    [Parameter]
+    public PRINTER_MAIN printer { get; set; }
+
+    PropertyInfo[] properties;
+
+    protected override async Task OnInitializedAsync()
+    {
+
+        properties = stats.GetType().GetProperties();
+
+    }
+
+}

@@ -1,0 +1,178 @@
+﻿@using PressINK_Server_App.Model.PrinterPingModel;
+@using PressINK_Server_App.Services;
+@using Web_scraper_practice_.Model.Printer_DB_Models.Sub_models;
+@using Web_scraper_practice_.Model.Printer_DB_Models;
+@inject PrinterService PrinterService
+@inject NavigationManager NavigationManager
+
+
+<MudPaper  Style="background-color:transparent;" Outlined="false" Elevation="0">
+
+    <MudGrid>
+
+        <MudItem sm="12">
+            <MudPaper Height="130px" Class="px-5 py-3 mud-border-primary" Elevation="3" Outlined="true">
+
+                <MudText Typo="Typo.h4"><MudIcon Icon="@Icons.Material.Filled.LocationCity" Size="Size.Large" />@currentPlant.NAME</MudText>
+                <MudText Typo="Typo.body1">@currentPlant.DESCP</MudText>
+            </MudPaper>
+        </MudItem>
+        <MudItem sm="6">
+            Offline Printers via Plant
+            <List_View_v1 offlineList="plantOffline" />
+        </MudItem>
+
+        <MudItem sm="6">
+            Printers via Plant
+            <MudPaper Elevation="3" Class="justify-center d-flex px-5 py-3 mud-border-primary mb-2" Style="@($"background-color:{Colors.LightGreen.Default}")" Width="100%" Height="100px">
+
+                <MudPaper Class="align-self-center" Elevation="0" Style="background-color:transparent;">
+                    <MudText Typo="Typo.h3"><MudIcon Icon="@Icons.Material.Filled.Print" Size="Size.Large" /> @GetPrintersPerPlant(plantID) </MudText>
+                </MudPaper>
+            </MudPaper>
+
+            <MudText>Models in Use</MudText>
+            <MudPaper Elevation="0" Outlined="true" Style="background-color:transparent" Class="mud-border-primary">
+
+                <MudList Clickable="true" Dense="true" Class="overflow-scroll " Style="height:200PX;">
+                    
+
+                    @foreach (var m in GetListOfModels(PrinterService.GetPrintersByPlant(plantID)))
+                    {
+                        <MudTooltip Style="background-color:transparent" Placement="Placement.Right" Delay="200" Duration="500">
+
+                            <ChildContent>
+                                <MudListItem IconColor="Color.Primary" Icon="@Icons.Material.Outlined.BlurCircular">
+                                    <MudElement 
+                                        HtmlTag="a"
+                                        href="@PrinterService.GetModelByID(m).LINK"
+                                        target="_blank">
+                                        <MudText>@m</MudText> <MudProgressLinear Color="Color.Primary" Rounded="true" Size="Size.Medium" Value="(double)100*(GetModelCount(m)/(PrinterService.GetPrintersByPlant(plantID).Count()))" /> 
+                                        @(Double.Round((double)100 * (GetModelCount(m) / (PrinterService.GetPrintersByPlant(plantID).Count())), 2))%
+                                    </MudElement>                                 
+                                </MudListItem>
+                            </ChildContent>
+
+                            <TooltipContent>
+                                <MudCard Outlined="true" Class="mud-border-primary"Elevation="3">
+
+                                    <MudCardMedia Image="images/press_w_bg.png" Height="50" />
+
+                                    <MudCardContent>
+                                        <MudText Typo="Typo.h5">Model: @PrinterService.GetModelByID(m).MODEL_ID</MudText>
+                                        <MudText>Manu.ID: @PrinterService.GetModelByID(m).MANUFACTOR_ID </MudText>
+                                        <MudText Typo="Typo.body2">Desc: @PrinterService.GetModelByID(m).DESCP.</MudText>
+                                        
+                                    </MudCardContent>
+                                   
+                                    
+
+                                </MudCard>
+                            </TooltipContent>
+                        </MudTooltip>
+
+                        
+                    }
+
+                </MudList>
+            </MudPaper>
+        </MudItem>
+
+
+       
+    </MudGrid>
+    
+
+</MudPaper>
+
+
+@code {
+
+    [Parameter]
+    public string plantID { get; set; }
+    [Parameter]
+    public List<PRINTER_MAIN> printerList { get; set; }
+    [Parameter]
+    public List<PLANT> plantList { get; set; }
+    [Parameter]
+    public List<MODEL> ModelList { get; set; }
+    [Parameter]
+    public List<MANUFACTOR> ManuList { get; set; }
+    [Parameter]
+    public List<PingModel> offlineList { get; set; }
+
+    public List<PingModel> plantOffline { get; set; }
+
+    public PLANT  currentPlant { get; set; }
+
+
+    protected override async Task OnInitializedAsync()
+    {
+        plantOffline = GetOffLineList(plantID);
+        currentPlant = PrinterService.GetPlantByID(plantID);
+    }
+
+
+
+    public int GetPrintersPerPlant(string ID)
+    {
+        var newList = PrinterService.GetPrintersByPlant(ID);
+        try
+        {
+            return newList.Count();
+        }
+        catch
+        {
+            return 0;
+        }
+    }
+
+    public List<string> GetListOfModels(List<PRINTER_MAIN> getList)
+    {
+        var newList = new List<string>();
+
+        foreach(var p in getList)
+        {
+            if (!newList.Contains(p.MODEL_ID))
+            {
+                newList.Add(p.MODEL_ID);
+            }
+        }
+        return newList;
+    }
+
+    public double GetModelCount(string model)
+    {
+        var newList = PrinterService.GetPrintersByPlant(plantID);
+        int count=0;
+        foreach(var p in newList)
+        {
+            if (p.MODEL_ID == model)
+            {
+                count++;
+            }
+        }
+
+        return count;
+    }
+
+
+
+    public List<PingModel> GetOffLineList(string ID)
+    {
+        List<PingModel> newList = new();
+
+        foreach(var p in offlineList)
+        {
+            if (p.PRINTER_MAIN.PLANT_ID == ID)
+            {
+                newList.Add(p);
+            }
+        }
+
+        return newList;
+    }
+
+   
+
+}

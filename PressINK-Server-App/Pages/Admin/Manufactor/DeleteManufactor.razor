@@ -1,0 +1,99 @@
+﻿@page "/press-Admin/Manufactors/Delete/{manuIdSTR}"
+@using PressINK_Server_App.Services;
+
+@using DB_SCHEMA.Data.PrinterContexts;
+@using Microsoft.EntityFrameworkCore;
+@using Web_scraper_practice_.Model.Printer_DB_Models;
+@using Web_scraper_practice_.Model.Printer_DB_Models.Sub_models;
+@inject PrinterService printerSerivce;
+@inject NavigationManager NavigationManager;
+@inject ISnackbar Snackbar;
+@attribute [Authorize(Roles = SD.GODEMODE)]
+
+
+<PageTitle>Manufacturer</PageTitle>
+
+<MudPaper Class="d-flex  border-l-4 border-solid mud-border-primary pa-4 mb-5" Outlined="false" Elevation="0" Style="background-color:Transparent">
+    <br />
+    <MudText Typo="Typo.h2"><strong>Manufacturers</strong></MudText>
+    <MudPaper Class=" d-flex justify-end" Style="background-color:transparent;" Elevation="0">
+        <MudIconButton Icon="@Icons.Material.Filled.Logout" aria-label="logout" Color="Color.Primary" Size="Size.Large" Href="Identity/Account/press-LogOut"></MudIconButton>
+        <MudIconButton Icon="@Icons.Material.Filled.Settings" aria-label="settings" Color="Color.Primary" Size="Size.Large" Href="Identity/Account/Manage/press-Index"></MudIconButton>
+    </MudPaper>
+    <br />
+    <br />
+</MudPaper>
+
+<MudPaper Class="" Outlined="false" Elevation="0" Style="background-color:transparent">
+    <MudCard Outlined="true" Style="width:50%;">
+        <MudCardContent>
+            <MudGrid>
+                <MudItem sm="12">
+                    <MudText Color="Color.Error"><strong>Manufacturer ID: @manu.MANUFACTOR_ID</strong></MudText>
+                </MudItem>
+                <MudItem sm="12">
+                    <MudText><strong>Name:</strong>@manu.NAME</MudText>
+                </MudItem>
+                <MudItem sm="12">
+                    <MudText><strong>Desc: </strong>@manu.DESCP</MudText>
+                </MudItem>
+            </MudGrid>
+        </MudCardContent>
+    </MudCard>
+    <br />
+    
+</MudPaper>
+
+<MudButton Variant="Variant.Text" Color="Color.Error" OnClick="OnDelete">Remove</MudButton>
+<MudButton Variant="Variant.Text" Color="Color.Primary" @onclick="OnCancel">Cancel</MudButton>
+
+@code {
+
+    [Parameter]
+    public string manuIdSTR { get; set; }
+
+    MANUFACTOR manu = new();
+
+    protected override async Task OnInitializedAsync()
+    {
+
+        manu = printerSerivce.GetManufactorByID(manuIdSTR);
+    }
+
+
+    protected void OnDelete()
+    {
+        printerSerivce.DeleteManufactor(manu.MANUFACTOR_ID);
+        NavigationManager.NavigateTo($"{SD.IIS_NAV}/press-Admin/Manufactors");
+        Show($"Manufacturer {manu.MANUFACTOR_ID} has been deleted.", 1);
+    }
+
+    protected void OnCancel()
+    {
+        NavigationManager.NavigateTo($"{SD.IIS_NAV}/press-Admin/Manufactors");
+        Show(SD.Cancel_sandbox, 2);
+
+    }
+
+    void Show(string message, int select)
+    {
+        if (select == 1)
+        {
+            Snackbar.Configuration.PositionClass = Defaults.Classes.Position.BottomLeft;
+            Snackbar.Add(message, Severity.Warning);
+        }
+        else if (select == 2)
+        {
+            Snackbar.Configuration.PositionClass = Defaults.Classes.Position.BottomLeft;
+            Snackbar.Add(message, Severity.Normal);
+        }
+        else
+        {
+            Snackbar.Configuration.PositionClass = Defaults.Classes.Position.BottomLeft;
+            Snackbar.Add(message, Severity.Success);
+        }
+    }
+
+
+
+}

@@ -1,0 +1,168 @@
+﻿@page "/press-Admin/Models/Create"
+@using PressINK_Server_App.Model.API_Form_Models
+@using PressINK_Server_App.Services;
+
+@using DB_SCHEMA.Data.PrinterContexts;
+@using Microsoft.EntityFrameworkCore;
+@using Web_scraper_practice_.Model.Printer_DB_Models;
+@using Web_scraper_practice_.Model.Printer_DB_Models.Sub_models;
+@inject PrinterService printerSerivce;
+@inject NavigationManager NavigationManager;
+@inject ISnackbar Snackbar;
+@attribute [Authorize(Roles = SD.GODEMODE)]
+
+
+<PageTitle>Model</PageTitle>
+
+<MudPaper Class="d-flex  border-l-4 border-solid mud-border-primary pa-4 mb-5" Outlined="false" Elevation="0" Style="background-color:Transparent">
+    <br />
+    <MudText Typo="Typo.h2"><strong>Models</strong></MudText>
+    <br />
+    <br />
+</MudPaper>
+
+<MudPaper Class="" Outlined="false" Elevation="0" Style="background-color:transparent">
+
+    <MudCard Outlined="true" Style="width:50%;">
+        <MudCardContent>
+            <EditForm Model="modelmod" OnValidSubmit="HandleSubmit">
+
+                <DataAnnotationsValidator />
+                @if (success)
+                {
+                    <MudText Color="@Color.Success"></MudText>
+                }
+                else
+                {
+                    <MudText Color="Color.Error">
+                        <ValidationSummary />
+                    </MudText>
+                }
+
+
+                <MudGrid>
+                    <MudItem>
+                        <MudTextField Label="Model ID" @bind-Value="@modelmod.MODEL_ID" For="@(()=>modelmod.MODEL_ID)" />
+                    </MudItem>
+
+                    <MudItem>
+                        <MudTextField Label="Name" @bind-Value="@modelmod.MODEL_NAME" For="@(()=>modelmod.MODEL_NAME)" />
+                    </MudItem>
+
+                    <MudItem sm="4">
+                        @if (manufactorList.Count != 0)
+                        {
+                            <MudSelect T="string" Label="Manufacturer ID" AnchorOrigin="Origin.BottomCenter" @bind-Value="@modelmod.MANUFACTOR_ID" For="@(()=>modelmod.MANUFACTOR_ID)">
+                                <MudSelectItem Value="manufactorList[0].MANUFACTOR_ID">Default...</MudSelectItem>
+                                @foreach (var man in manufactorList)
+                                {
+                                    <MudSelectItem Value="@man.MANUFACTOR_ID">@man.MANUFACTOR_ID</MudSelectItem>
+                                }
+                            </MudSelect>
+                        }
+                        else
+                        {
+                             <MudSelect Disabled="true" T="string" Label="Manufacturer ID" AnchorOrigin="Origin.BottomCenter" @bind-Value="@modelmod.MANUFACTOR_ID" For="@(()=>modelmod.MANUFACTOR_ID)">
+                                <MudSelectItem Value="String.Empty"> -empty- </MudSelectItem>
+                       
+                            </MudSelect>
+                        }
+                    </MudItem>
+
+                    <MudItem sm="6">
+                        @if (template_list.Count !=null && template_list.Count != 0)
+                        {
+                            <MudSelect T="string" Label="API Template" AnchorOrigin="Origin.BottomCenter" @bind-Value="@modelmod.API_template" For="@(()=>modelmod.API_template)">
+                                <MudSelectItem Value="template_list[0].ID">Default...</MudSelectItem>
+                                @foreach (var tem in template_list)
+                                {
+                                    <MudSelectItem Value="@tem.ID">@tem.Template_Name</MudSelectItem>
+                                }
+                            </MudSelect>
+                        }
+                        else
+                        {
+                            <MudSelect Disabled="true" T="string" Label="API Template" AnchorOrigin="Origin.BottomCenter" @bind-Value="@modelmod.API_template" For="@(()=>modelmod.API_template)">
+                                <MudSelectItem Value="String.Empty"> -empty- </MudSelectItem>
+
+                            </MudSelect>
+                        }
+                    </MudItem>
+
+                    <MudItem>
+                        <MudTextField Label="Des." @bind-Value="@modelmod.DESCP" For="@(()=>modelmod.DESCP)" />
+                    </MudItem>
+
+                    <MudItem>
+                        <MudTextField Label="Link" @bind-Value="@modelmod.LINK" For="@(()=>modelmod.LINK)" />
+                    </MudItem>
+                    
+                </MudGrid>
+
+                <br />
+
+                <MudText>
+                    *ID will be filled with random vale if not unique.
+                </MudText>
+                <MudButton Variant="Variant.Text" Color="Color.Primary" ButtonType="ButtonType.Submit">Create</MudButton>
+                <MudButton Variant="Variant.Text" Color="Color.Primary" @onclick="Cancel">Cancel</MudButton>
+            </EditForm>
+        </MudCardContent>
+    </MudCard>
+
+</MudPaper>
+
+
+@code {
+
+
+    public List<MANUFACTOR> manufactorList { get; set; }
+    List<API_Templates> template_list = new();
+
+    bool success;
+    MODEL modelmod = new();
+
+    protected override async Task OnInitializedAsync()
+    {
+        manufactorList = printerSerivce.GetManufactors();
+        template_list = await printerSerivce.GetTemplates();
+    }
+
+    private void HandleSubmit(EditContext editContext)
+    {
+        var newModel = (MODEL)editContext.Model;
+        success = true;
+        newModel.MODEL_ID=newModel.MODEL_ID.ToUpper();
+        printerSerivce.AddModel(newModel);
+        NavigationManager.NavigateTo($"{SD.IIS_NAV}/press-Admin/Models");
+        Show($"Model {modelmod.MODEL_ID} has been created.", 3);
+
+    }
+
+    private void Cancel()
+    {
+        NavigationManager.NavigateTo($"{SD.IIS_NAV}/press-Admin/Models");
+        Show(SD.Cancel_sandbox, 2);
+    }
+
+
+    void Show(string message, int select)
+    {
+        if (select == 1)
+        {
+            Snackbar.Configuration.PositionClass = Defaults.Classes.Position.BottomLeft;
+            Snackbar.Add(message, Severity.Warning);
+        }
+        else if (select == 2)
+        {
+            Snackbar.Configuration.PositionClass = Defaults.Classes.Position.BottomLeft;
+            Snackbar.Add(message, Severity.Normal);
+        }
+        else
+        {
+            Snackbar.Configuration.PositionClass = Defaults.Classes.Position.BottomLeft;
+            Snackbar.Add(message, Severity.Success);
+        }
+    }
+
+}

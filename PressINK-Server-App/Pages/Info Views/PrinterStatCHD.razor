@@ -1,0 +1,170 @@
+﻿
+@using PressINK_Server_App.Model.API_Data.Return_Types
+@using PressINK_Server_App.Pages.TemplateViews
+@using PressINK_Server_App.Services;
+@using Web_scraper_practice_.Model.Printer_DB_Models.Sub_models;
+@using PressINK_Server_App.Model.PrinterAPIModels;
+@inject ISnackbar Snackbar;
+
+<style>
+    body{
+        --mud-palette-success: #8bc34a;
+    }
+</style>
+
+
+<MudGrid>
+
+    <MudItem sm="6">
+        <MudPaper Class=" d-flex px-2 mt-2 " Style="background-color:transparent;" Elevation="0">
+            <MudPaper Elevation="0" Style="background-color:transparent;">
+                <MudRadioGroup T="string" @bind-SelectedOption="@radioOption" @onclick="RadioSelectUpdate">
+                    <MudRadio Option="radioDefault" Color="Color.Success" Dense="true" UnCheckedColor="Color.Default">All</MudRadio>
+                    @foreach (var c in categoryList)
+                    {
+                        <MudRadio Option="c.CATEGORY_ID" Color="Color.Success" Dense="true" UnCheckedColor="Color.Default">@c.NAME</MudRadio>
+                    }
+                </MudRadioGroup>
+            </MudPaper>
+        </MudPaper>
+    </MudItem>
+    <MudItem sm="6">
+        <MudPaper Height="100%" Width="100%" Style="background-color:transparent" Elevation="0" Class="d-flex flex-wrap flex-grow-1 gap-4 justify-end align-content-end">
+           
+            <MudPaper Width="130px" Height="20px" Class="d-flex flex-wrap flex-grow-1 gap-4 justify-end align-content-end" Style="background-color:transparent" Elevation="0">
+                <MudText Typo="Typo.caption">Line: <MudText Typo="Typo.caption" Color="Color.Primary" >@plantTitle</MudText></MudText>
+                <MudText Typo="Typo.caption">Type: <MudText Typo="Typo.caption" Style="color:#8bc34a">@Title</MudText></MudText>
+            </MudPaper>
+        </MudPaper>
+    </MudItem>
+
+</MudGrid>
+
+<MudPaper Width="100%" Height="71vh"  Outlined="false" Class="" Style="background-color:transparent;overflow-x:hidden;overflow-y:scroll;position:relative" Elevation="0">
+   
+    @if (count == 0)
+    {
+        <MudPaper Elevation="0" Style="background-color:transparent" Class="px-2 py-2 d-flex justify-center" Height="100%" Width="100%">
+
+            <MudPaper Elevation="0" Style="background-color:transparent">
+
+                <MudText Typo="Typo.h5" Color="Color.Primary">- No Printers to Display-</MudText>
+            </MudPaper>
+
+        </MudPaper>
+    }
+    else
+    {
+        <br/>
+        <MudGrid Justify="Justify.SpaceAround" Class="px-2 " >
+            @foreach (var printer in printerCatList.OrderBy(x=>x.PrinterStats.STATUS))
+            {
+                <MudItem lg="3" Class="my-4">
+                    @switch (printer.PrinterStats)
+                    {
+                        case STA STA_printer:
+                            <STA_v printer="printer.printerOBJ" stats="STA_printer" />
+                            break;
+
+                        case MSP MSP_printer:
+                            <MSP_v printer="printer.printerOBJ" stats="MSP_printer" />
+                            break;
+
+                        case Error_Dis Err_printer:
+                            <Error_Dis_v printer="printer.printerOBJ" stats="Err_printer" />
+                            break;
+                    }
+                </MudItem>
+            }
+        </MudGrid>
+    }
+
+
+</MudPaper>
+
+   
+
+@code 
+{
+    [Parameter]
+    public string plantTitle{ get; set; }
+
+
+    [Parameter]
+    public List<PrinterInfoFull_Agile> printerList { get; set; }
+    public List<PrinterInfoFull_Agile> printerCatList { get; set; }
+
+    public int count = 0;
+
+    bool loading = true; 
+
+    [Parameter]
+    public List<CATEGORY> categoryList { get; set; }
+    System.Timers.Timer timer = new(interval: 1000);
+
+    string radioDefault = "ALL";
+    string radioOption;
+    string Title;
+
+    protected override async Task OnInitializedAsync()
+    {
+        Title = radioDefault;
+        radioOption = radioDefault;
+        RadioSelectUpdate();
+        timer.Elapsed += (sender, e) => HandleTimer();
+        timer.Start();
+    }
+
+    public void HandleTimer()
+    {
+        RadioSelectUpdate();
+        InvokeAsync(() => { StateHasChanged(); });
+    }
+
+
+    void RadioSelectUpdate()
+    {
+        loading = true;
+        InvokeAsync(() => { StateHasChanged(); });
+        Title = radioOption;
+        if (radioOption != "ALL")
+        {
+            filter_List(radioOption);
+        }
+        else
+        {
+            printerCatList = printerList;
+            if (printerCatList == null)
+            {
+                count = 0;
+            }
+            else
+            {
+                count = printerCatList.Count;
+            }
+
+        }
+
+
+     
+        loading = false;
+        InvokeAsync(() => { StateHasChanged(); });
+    }
+
+    public void filter_List(string catID)
+    {
+
+        try
+        {
+            printerCatList = printerList.Where(x => x.printerOBJ.CATEGORY_ID.Equals(catID)).ToList();
+            count = printerCatList.Count;
+        }
+        catch
+        {
+            
+        }
+    }
+
+
+   
+}

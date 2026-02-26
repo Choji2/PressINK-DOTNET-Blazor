@@ -1,0 +1,173 @@
+﻿@page "/press-LiveStats"
+
+@using PressINK_Server_App.Pages.Info_Views
+@using PressINK_Server_App.Services;
+@using Web_scraper_practice_.Model.Printer_DB_Models;
+@using Web_scraper_practice_.Model.Printer_DB_Models.Sub_models;
+@using PressINK_Server_App.Model.PrinterAPIModels;
+
+@inject PrinterService PrinterServices
+@inject APIInjectServices APIInjectServices
+@inject ISnackbar Snackbar;
+
+
+
+<MudPaper Elevation="0" Style="background-color:transparent">
+    <MudGrid>
+
+        <MudItem sm="8">
+            <MudPaper Elevation="0" Style="background-color:transparent;">
+
+                
+                <MudPaper Style="@($"color:{Colors.LightGreen.Default};background-color:transparent")" Class="px-3   border-l-4 border-solid mud-border-primary" Elevation="0" Height="50px">
+                    <Date_time />
+                </MudPaper>
+                <PressINK_Server_App.Shared.Auth.LogoutButton/>
+
+            </MudPaper>
+
+        </MudItem>
+
+     
+
+    </MudGrid>
+</MudPaper>
+ 
+<MudPaper Class=" d-flex justify-end mt-5 " Style="background-color:transparent;" Elevation="0">
+
+    <MudPaper Elevation="0" Style="background-color:transparent;">
+        <MudRadioGroup T="string" @bind-SelectedOption="@radioOption" @onclick="RadioSelectUpdate">
+            <MudRadio Option="radioDefault" Color="Color.Primary" Dense="true" UnCheckedColor="Color.Default" >All</MudRadio>
+            @foreach (var p in plantList)
+            {
+                <MudRadio Option="p.PLANT_ID" Color="Color.Primary" Dense="true" UnCheckedColor="Color.Default" >@p.PLANT_ID</MudRadio>
+
+            }
+
+        </MudRadioGroup>
+    </MudPaper>
+
+</MudPaper>
+
+@if(loadingCount == null || allPrinters == null)
+{
+    <MudText>System initial load. Please wait...</MudText><MudProgressCircular Color="Color.Primary" Style="height:70px;width:70px;" Indeterminate="true" />
+}
+
+else if (loadingCount!=allPrinters.Count && MasterList == null )
+{
+    <MudText>System initial load. Please wait...@loadingCount of @allPrinters.Count complete</MudText>
+    <MudProgressCircular Color="Color.Primary" Style="height:70px;width:70px;" Indeterminate="true" />
+}
+else
+{
+    <MudPaper Height="640px" Width="100%" Style="background-color:transparent" Elevation="0">
+
+        <PrinterStatCHD  printerList="PlantList" categoryList="catList" plantTitle="@radioOption" />
+
+    </MudPaper>
+}
+
+
+
+
+@code 
+{
+    string radioDefault = "ALL";
+    string radioOption;
+    string Title;
+
+    int loadingCount; 
+
+    //List<PrinterInfoFull> m5255MasterList = new();
+    List<PrinterInfoFull_Agile> MasterList = new();
+
+    //List<PrinterInfoFull> m5255PlantList = new();
+    List<PrinterInfoFull_Agile> PlantList = new();
+
+    List<PRINTER_MAIN> allPrinters = new();
+    List<PLANT> plantList = new();
+    List<CATEGORY> catList = new();
+
+    bool Live = true;
+    bool loading = true;
+
+
+    System.Timers.Timer timer;
+
+    protected override async Task OnInitializedAsync()
+    {
+        allPrinters = PrinterServices.GetPrinters();
+        Title = radioDefault;
+        radioOption = radioDefault;
+
+
+        //m5255MasterList = APIInjectServices.PrinterObjects();
+        MasterList = APIInjectServices.GetFullPrinterObjects();
+
+        RadioSelectUpdate();
+
+        plantList = PrinterServices.GetPlants();
+        catList = PrinterServices.GetCategories();
+
+        if (loadingCount != allPrinters.Count && MasterList == null)
+        {
+            timer = new(interval: 2000);
+        }
+        else
+        {
+            timer = new(interval: 60000);
+        }
+
+        timer.Elapsed += (sender, e) => HandleTimer();
+        timer.Start();
+    }
+
+    public void HandleTimer()
+    {
+        loadingCount = APIInjectServices.GetFullCount();
+
+        if (loadingCount == allPrinters.Count || MasterList != null)
+        {
+            MasterList = APIInjectServices.GetFullPrinterObjects();
+            RadioSelectUpdate();
+            
+        }
+
+        InvokeAsync(() => { StateHasChanged(); });
+        
+    }
+
+    void RadioSelectUpdate()
+    {
+        Title = radioOption;
+        if (radioOption != "ALL")
+        {
+            filter_List(radioOption);
+        }
+        else
+        {
+            //m5255PlantList = m5255MasterList;
+            PlantList = MasterList;
+
+        }
+        InvokeAsync(() => { StateHasChanged(); });
+    }
+
+    public void filter_List(string plantID)
+    {
+
+        try
+        {
+            //m5255PlantList = m5255MasterList.Where(x => x.printerOBJ.PLANT_ID.Equals(plantID)).ToList();
+            PlantList = MasterList.Where(x => x.printerOBJ.PLANT_ID.Equals(plantID)).ToList();
+        }
+        catch
+        {
+            
+        }
+
+    }
+
+    
+}

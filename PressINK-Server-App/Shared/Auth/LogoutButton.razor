@@ -1,0 +1,31 @@
+﻿@using PressINK_Server_App.Services;
+@using PressINK_Server_App.Services.Auth.Services
+@using Microsoft.AspNetCore.Authentication
+@inject AuthenticationStateProvider AuthenticationStateProvider
+@inject IJSRuntime JSRuntime
+
+
+
+
+<MudPaper Class=" d-flex justify-end" Style="background-color:transparent;" Elevation="0">
+    <MudIconButton Icon="@Icons.Material.Filled.Logout" aria-label="logout" Color="Color.Primary" Size="Size.Large" OnClick="Logout" Title="Logout"></MudIconButton>
+</MudPaper>
+
+@code {
+
+    public async Task Logout()
+    {
+        try
+        {
+            await ((AuthenticationHandler)AuthenticationStateProvider).Logout();
+
+            await JSRuntime.InvokeVoidAsync("window.location.assign", SD.IIS_NAV + "/");
+
+        }
+        catch (Exception ex)
+        {
+            Console.WriteLine(ex.Message);
+
+        }
+    }
+}

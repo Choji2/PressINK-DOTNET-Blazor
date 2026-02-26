@@ -1,0 +1,195 @@
+﻿@page "/press-Admin/Models/Update/{modelrIdSTR}"
+@using PressINK_Server_App.Model.API_Form_Models
+@using PressINK_Server_App.Services;
+
+@using DB_SCHEMA.Data.PrinterContexts;
+@using Microsoft.EntityFrameworkCore;
+@using Web_scraper_practice_.Model.Printer_DB_Models;
+@using Web_scraper_practice_.Model.Printer_DB_Models.Sub_models;
+@inject PrinterService printerSerivce;
+@inject NavigationManager NavigationManager;
+@inject ISnackbar Snackbar;
+@attribute [Authorize(Roles = SD.GODEMODE)]
+
+
+<PageTitle>Model</PageTitle>
+
+
+<MudPaper Class="d-flex  border-l-4 border-solid mud-border-primary pa-4 mb-5" Outlined="false" Elevation="0" Style="background-color:Transparent">
+    <br />
+    <MudText Typo="Typo.h2"><strong>Models</strong></MudText>
+    <br />
+    <br />
+</MudPaper>
+
+<MudPaper Class="" Outlined="false" Elevation="0" Style="background-color:transparent">
+    <MudPaper Class="" Outlined="false" Elevation="0" Style="background-color:transparent">
+       <MudGrid>
+           <MudItem sm="6">
+                <MudCard Outlined="true">
+                    <MudCardContent>
+                        <EditForm Model="modelmod" OnValidSubmit="HandleSubmit">
+
+                            <DataAnnotationsValidator />
+                            @if (success)
+                            {
+                                <MudText Color="@Color.Success"></MudText>
+                            }
+                            else
+                            {
+                                <MudText Color="Color.Error">
+                                    <ValidationSummary />
+                                </MudText>
+                            }
+
+                            <MudGrid>
+
+                                <MudItem>
+                                    <MudTextField Label="Model ID" @bind-Value="@modelmod.MODEL_ID" For="@(()=>modelmod.MODEL_ID)" ReadOnly="true" />
+                                </MudItem>
+
+                                <MudItem>
+                                    <MudTextField Label="Name" @bind-Value="@modelmod.MODEL_NAME" For="@(()=>modelmod.MODEL_NAME)" />
+                                </MudItem>
+
+                                <MudItem sm="4">
+                                    <MudSelect T="string" Label="Manufacturer " AnchorOrigin="Origin.BottomCenter" @bind-Value="@modelmod.MANUFACTOR_ID">
+                                        <MudSelectItem Value="manufactorList[0].MANUFACTOR_ID">Default...</MudSelectItem>
+                                        @foreach (var man in manufactorList)
+                                        {
+                                            <MudSelectItem Value="@man.MANUFACTOR_ID">@man.MANUFACTOR_ID</MudSelectItem>
+                                        }
+                                    </MudSelect>
+                                </MudItem>
+
+                                <MudItem sm="12">
+                                    <MudTextField Label="Desc." @bind-Value="@modelmod.DESCP" For="@(()=>modelmod.DESCP)" />
+                                </MudItem>
+
+                                <MudItem>
+                                    <MudTextField Label="Link" @bind-Value="@modelmod.LINK" For="@(()=>modelmod.LINK)" />
+                                </MudItem>
+
+                            </MudGrid>
+
+                            <br />
+
+                            <MudButton Variant="Variant.Text" Color="Color.Primary" ButtonType="ButtonType.Submit">Update</MudButton>
+                            <MudButton Variant="Variant.Text" Color="Color.Primary" @onclick="Cancel">Cancel</MudButton>
+
+                        </EditForm>
+
+                    </MudCardContent>
+                </MudCard>
+           </MudItem>
+           <MudItem sm="6">
+                <MudTable Items="model_Attributes" Hover="true" Breakpoint="Breakpoint.Sm" Loading="false" LoadingProgressColor="Color.Info">
+                <HeaderContent>
+                        <MudTh>API Attribute</MudTh>
+                        <MudTh>Type</MudTh>
+                        <MudTh>Value</MudTh>
+                </HeaderContent>
+                <RowTemplate>
+                    <MudTd DataLabel="Name">@context.Attribute_Name</MudTd>
+                        <MudTd DataLabel="Type">
+                            <MudSelect T="string" Label="Type" AnchorOrigin="Origin.BottomCenter" @bind-Value="context.Attribute_Type">
+                                @foreach (var type in attributeTypesList)
+                                {
+                                    <MudSelectItem Value="@type.ID">@type.ID</MudSelectItem>
+                                }
+                            </MudSelect>
+                        </MudTd>
+                    <MudTd DataLabel=" Value">
+                        <MudTextField @bind-Value="@context.Attribute_Value" Label="Type and Press ENTER" Variant="Variant.Outlined" Margin="Margin.Dense"></MudTextField>
+                    </MudTd>
+                </RowTemplate>
+            </MudTable>
+           </MudItem>
+       </MudGrid>
+
+    </MudPaper>
+
+</MudPaper>
+
+
+
+
+@code {
+
+    [Parameter]
+    public string modelrIdSTR { get; set; }
+    [Parameter]
+    public string rand1 { get; set; }
+    [Parameter]
+    public string  rand2 { get; set; }
+    bool success;
+
+    public List<MANUFACTOR> manufactorList { get; set; }
+    public List<Attribute_Type> attributeTypesList { get; set; }
+    public List<Model_Attributes> model_Attributes { get; set; }
+
+    MODEL modelmod = new();
+
+
+    protected override async Task OnInitializedAsync()
+    {
+        manufactorList = printerSerivce.GetManufactors();
+        model_Attributes = await printerSerivce.GetAllModelAttributes(modelrIdSTR);
+        attributeTypesList = await printerSerivce.GetAllAttributeTypes();
+
+        SetCurrent();
+    }
+
+
+    protected void SetCurrent()
+    {
+        MODEL oldModel = printerSerivce.GetModelByID(modelrIdSTR);
+
+
+        modelmod.MODEL_ID = oldModel.MODEL_ID;
+        modelmod.MODEL_NAME = oldModel.MODEL_NAME;
+        modelmod.MANUFACTOR_ID = oldModel.MANUFACTOR_ID;
+        modelmod.DESCP = oldModel.DESCP;
+        modelmod.LINK = oldModel.LINK;
+        modelmod.API_template = oldModel.API_template;
+    }
+
+
+    private async Task HandleSubmit(EditContext editContext)
+    {
+        var updated = (MODEL)editContext.Model;
+
+        success = true;
+        await printerSerivce.UpdateModel(updated,model_Attributes);
+        NavigationManager.NavigateTo($"{SD.IIS_NAV}/press-Admin/Models");
+        Show($"Model {modelmod.MODEL_ID} has been updated.", 3);
+
+    }
+
+
+    private void Cancel()
+    {
+        NavigationManager.NavigateTo($"{SD.IIS_NAV}/press-Admin/Models");
+        Show(SD.Cancel_sandbox, 2);
+
+    }
+
+    void Show(string message, int select)
+    {
+        if (select == 1)
+        {
+            Snackbar.Configuration.PositionClass = Defaults.Classes.Position.BottomLeft;
+            Snackbar.Add(message, Severity.Warning);
+        }
+        else if (select == 2)
+        {
+            Snackbar.Configuration.PositionClass = Defaults.Classes.Position.BottomLeft;
+            Snackbar.Add(message, Severity.Normal);
+        }
+        else
+        {
+            Snackbar.Configuration.PositionClass = Defaults.Classes.Position.BottomLeft;
+            Snackbar.Add(message, Severity.Success);
+        }
+    }
+}

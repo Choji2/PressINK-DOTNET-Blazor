@@ -1,0 +1,124 @@
+﻿@using PressINK_Server_App.Model.API_Data.Return_Types
+@using PressINK_Server_App.Model.PrinterAPIModels
+@using System.Reflection
+@using PressINK_Server_App.Pages.TemplateViews.sub_view
+@using Web_scraper_practice_.Model.Printer_DB_Models
+
+
+<MudPaper Class=" rounded"  Elevation="5" Outlined="false" Style="background-color:transparent;width:95% ">
+
+    
+    <MudGrid Style="align-items:center" Class="px-2 py-2">
+        <MudItem sm="12">
+            <StatusNTitle que="@printer.QUE" status="@stats.STATUS" />
+        </MudItem>
+        
+        <MudItem style="width:200px" sm="6">
+            <Common_Info printer="printer" />
+        </MudItem>
+
+        <MudItem sm="6">
+            <MudGrid>
+
+                <MudItem Class="">
+                    @if (stats.Convert(stats.INK) < 50 && stats.Convert(stats.INK) > 25)
+                    {
+                        <MudProgressCircular Color="Color.Warning" Value="@stats.Convert(stats.INK)" Size="Size.Large" />
+                    }
+                    else if (stats.Convert(stats.INK) >= 50)
+                    {
+                        <MudProgressCircular Color="Color.Success" Value="@stats.Convert(stats.INK)" Size="Size.Large" />
+                    }
+                    else
+                    {
+                        <MudProgressCircular Color="Color.Error" Value="@stats.Convert(stats.INK)" Size="Size.Large" />
+                    }
+
+                    <MudText Typo="Typo.caption">Ink: @stats.Convert(stats.INK)</MudText>
+                </MudItem>
+
+                <MudItem Class="">
+                    @if (stats.Convert(stats.MAINT) < 50 && stats.Convert(stats.MAINT) > 25)
+                    {
+                        <MudProgressCircular Color="Color.Warning" Value="@stats.Convert(stats.MAINT)" Size="Size.Large" />
+                    }
+                    else if (stats.Convert(stats.MAINT) >= 50)
+                    {
+                        <MudProgressCircular Color="Color.Success" Value="@stats.Convert(stats.MAINT)" Size="Size.Large" />
+                    }
+                    else
+                    {
+                        <MudProgressCircular Color="Color.Error" Value="@stats.Convert(stats.MAINT)" Size="Size.Large" />
+                    }
+
+                    <MudText Typo="Typo.caption"> Maint: @stats.Convert(stats.MAINT)</MudText>
+                </MudItem>
+
+                <MudItem Class="">
+                    @if (stats.Convert(stats.IMG_U) < 50 && stats.Convert(stats.IMG_U) > 25)
+                    {
+                        <MudProgressCircular Color="Color.Warning" Value="@stats.Convert(stats.IMG_U)" Size="Size.Large" />
+                    }
+                    else if (stats.Convert(stats.IMG_U) >= 50)
+                    {
+                        <MudProgressCircular Color="Color.Success" Value="@stats.Convert(stats.IMG_U)" Size="Size.Large" />
+                    }
+                    else
+                    {
+                        <MudProgressCircular Color="Color.Error" Value="@stats.Convert(stats.IMG_U)" Size="Size.Large" />
+                    }
+                    <MudText Typo="Typo.caption"> Img: @stats.Convert(stats.IMG_U)</MudText>
+                </MudItem>
+            </MudGrid>
+            <MudPaper Elevation="0" Style="background-color:transparent">
+
+            </MudPaper>
+
+        </MudItem>
+
+
+        <MudItem sm="12">
+            <MudTabs Elevation="0" Rounded="false" ApplyEffectsToContainer="true" PanelClass="" Class="mt-1">
+
+                <MudTabPanel Text="Warnings">
+                    <MudText>@stats.WARNING</MudText>
+                </MudTabPanel>
+
+
+                <MudTabPanel Text="Messages">
+                    <MudText>@stats.MESSAGE</MudText>
+                </MudTabPanel>
+
+
+            </MudTabs>
+        </MudItem>
+    </MudGrid>
+
+   
+    
+    
+
+</MudPaper>
+
+
+
+
+
+@code {
+
+    [Parameter]
+    public MSP stats { get; set; }
+
+    [Parameter]
+    public PRINTER_MAIN printer { get; set; }
+
+    PropertyInfo[] properties;
+
+    protected override async Task OnInitializedAsync()
+    {
+        
+        properties = stats.GetType().GetProperties();
+    
+    }
+
+}

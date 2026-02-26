@@ -1,0 +1,52 @@
+﻿
+@using PressINK_Server_App.Model.API_Data.Return_Types
+@using PressINK_Server_App.Model.PrinterAPIModels
+@using PressINK_Server_App.Pages.TemplateViews
+@using PressINK_Server_App.Services
+
+@inject PrinterService PrinterServices
+@inject APIInjectServices APIInjectServices
+
+
+
+    <MudGrid >
+        @foreach (var printer in MasterList)
+        {
+            <MudItem md="4" Class="">
+                @switch (printer.PrinterStats)
+                {
+                    case STA STA_printer:
+                    <STA_v printer="printer.printerOBJ" stats="STA_printer" />
+                    break;
+
+                    case MSP MSP_printer:
+                    <MSP_v printer="printer.printerOBJ" stats="MSP_printer" />
+                    break;
+
+                    case Error_Dis Err_printer:
+                    <Error_Dis_v printer="printer.printerOBJ" stats="Err_printer" />
+                    break;
+                }
+            </MudItem>
+        }
+    </MudGrid>
+    
+@code {
+
+
+    List<PrinterInfoFull_Agile> MasterList = new();
+  
+
+    protected override async Task OnInitializedAsync()
+    {
+      
+        MasterList = APIInjectServices.GetFullPrinterObjects();
+        
+    }
+
+
+
+
+
+
+}

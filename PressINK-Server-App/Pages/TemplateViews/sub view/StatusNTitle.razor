@@ -1,0 +1,91 @@
+﻿<style>
+    .glow {
+        box-shadow: 0 0 5px 0px #8bc34a;
+    }
+    .glow-err {
+        box-shadow: 0 0 5px 0px #f64e62ff;
+
+    }
+
+    .glow-warn {
+        box-shadow: 0 0 5px 0px#ffa800ff;
+    }
+
+    .glow-sys {
+        box-shadow: 0 0 5px 0px #92a6b7;
+    }
+
+    .monospace {
+        font-family: 'Press Start 2P', Courier, monospace;
+    }
+
+    @@keyframes blink {
+    0%, 100% {
+        opacity: 5;
+    }
+    50% {
+        opacity: 0;
+    }
+}
+
+.blink {
+    animation: blink 3s infinite;
+}
+
+    .blink-err {
+        animation: blink 1s infinite;
+    }
+</style>
+
+
+<MudGrid>
+                <MudItem lg="12" Class="d-flex flex-wrap justify-end ">
+                    <MudText Typo="Typo.h4" Class="">@que.ToUpper()</MudText>
+                </MudItem>
+                <MudItem sm="6" Class="">
+                    @if (new SD().Acceptable_status.Contains(status.ToUpper()))
+                    {
+                        <MudPaper Elevation="3" Class="text-center d-flex flex-wrap justify-center glow" Style="background-color:#8bc34a;width:95%">
+                            <MudText Class="monospace blink" Typo="Typo.h5">@status.ToUpper()</MudText>
+                        </MudPaper>
+
+                    }else if ( new SD().Acceptable_Warnning_status.Contains(status.ToUpper()))
+                    {
+            <MudPaper Elevation="3" Class="text-center d-flex flex-wrap justify-center glow-warn" Style="background-color:#ffa800ff;width:95%">
+                            <MudText Class="monospace blink-err" Typo="Typo.h5">@status.ToUpper()</MudText>
+                        </MudPaper>
+                    }
+                    else if (new SD().Acceptable_SysErr_status.Contains(status.ToUpper()))
+                    {
+            <MudPaper Elevation="3" Class="text-center d-flex flex-wrap justify-center glow-sys" Style="background-color:#92a6b7;width:95%">
+                            <MudText Class="monospace blink-err" Typo="Typo.h5">@status.ToUpper()</MudText>
+                        </MudPaper>
+                    }
+                    else
+                    {
+                        <MudPaper Elevation="2" Class="text-center d-flex flex-wrap justify-center glow-err " style="background-color:#f64e62ff">
+                            <MudText Class="monospace blink-err" Typo="Typo.h5">@status</MudText>
+                        </MudPaper>
+                    }
+                </MudItem>
+</MudGrid>
+
+
+
+@code {
+    [Parameter]
+    public string que { get; set; }
+
+    [Parameter]
+    public string status { get; set; }
+
+    protected override async Task OnInitializedAsync()
+    {
+
+        if(status is null)
+        {
+            status = "NULL";
+        }
+
+    }
+}

@@ -1,0 +1,602 @@
+{
+  "Version": 1,
+  "WorkspaceRootPath": "C:\\Users\\vac59186\\source\\repos\\Choji2\\PressINK-DOTNET-Blazor\\",
+  "Documents": [
+    {
+      "AbsoluteMoniker": "D:0:0:{760B598C-035F-43D2-AAB6-E837F4A5F762}|AAP_PRINT_Dashboard\\PressINK-Server-App.csproj|c:\\users\\vac59186\\source\\repos\\choji2\\pressink-dotnet-blazor\\aap_print_dashboard\\pages\\_host.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{760B598C-035F-43D2-AAB6-E837F4A5F762}|AAP_PRINT_Dashboard\\PressINK-Server-App.csproj|solutionrelative:aap_print_dashboard\\pages\\_host.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{760B598C-035F-43D2-AAB6-E837F4A5F762}|AAP_PRINT_Dashboard\\PressINK-Server-App.csproj|c:\\users\\vac59186\\source\\repos\\choji2\\pressink-dotnet-blazor\\aap_print_dashboard\\pages\\templateviews\\error_dis_v.razor||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{760B598C-035F-43D2-AAB6-E837F4A5F762}|AAP_PRINT_Dashboard\\PressINK-Server-App.csproj|solutionrelative:aap_print_dashboard\\pages\\templateviews\\error_dis_v.razor||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{760B598C-035F-43D2-AAB6-E837F4A5F762}|AAP_PRINT_Dashboard\\PressINK-Server-App.csproj|c:\\users\\vac59186\\source\\repos\\choji2\\pressink-dotnet-blazor\\aap_print_dashboard\\pages\\templateviews\\msp_v.razor||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{760B598C-035F-43D2-AAB6-E837F4A5F762}|AAP_PRINT_Dashboard\\PressINK-Server-App.csproj|solutionrelative:aap_print_dashboard\\pages\\templateviews\\msp_v.razor||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{760B598C-035F-43D2-AAB6-E837F4A5F762}|AAP_PRINT_Dashboard\\PressINK-Server-App.csproj|c:\\users\\vac59186\\source\\repos\\choji2\\pressink-dotnet-blazor\\aap_print_dashboard\\pages\\templateviews\\sta_v.razor||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{760B598C-035F-43D2-AAB6-E837F4A5F762}|AAP_PRINT_Dashboard\\PressINK-Server-App.csproj|solutionrelative:aap_print_dashboard\\pages\\templateviews\\sta_v.razor||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{760B598C-035F-43D2-AAB6-E837F4A5F762}|AAP_PRINT_Dashboard\\PressINK-Server-App.csproj|c:\\users\\vac59186\\source\\repos\\choji2\\pressink-dotnet-blazor\\aap_print_dashboard\\shared\\auth\\logoutbutton.razor||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{760B598C-035F-43D2-AAB6-E837F4A5F762}|AAP_PRINT_Dashboard\\PressINK-Server-App.csproj|solutionrelative:aap_print_dashboard\\shared\\auth\\logoutbutton.razor||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{760B598C-035F-43D2-AAB6-E837F4A5F762}|AAP_PRINT_Dashboard\\PressINK-Server-App.csproj|c:\\users\\vac59186\\source\\repos\\choji2\\pressink-dotnet-blazor\\aap_print_dashboard\\pages\\test\\test.razor||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{760B598C-035F-43D2-AAB6-E837F4A5F762}|AAP_PRINT_Dashboard\\PressINK-Server-App.csproj|solutionrelative:aap_print_dashboard\\pages\\test\\test.razor||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{760B598C-035F-43D2-AAB6-E837F4A5F762}|AAP_PRINT_Dashboard\\PressINK-Server-App.csproj|c:\\users\\vac59186\\source\\repos\\choji2\\pressink-dotnet-blazor\\aap_print_dashboard\\pages\\info views\\printerstatchd.razor||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{760B598C-035F-43D2-AAB6-E837F4A5F762}|AAP_PRINT_Dashboard\\PressINK-Server-App.csproj|solutionrelative:aap_print_dashboard\\pages\\info views\\printerstatchd.razor||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{760B598C-035F-43D2-AAB6-E837F4A5F762}|AAP_PRINT_Dashboard\\PressINK-Server-App.csproj|c:\\users\\vac59186\\source\\repos\\choji2\\pressink-dotnet-blazor\\aap_print_dashboard\\pages\\printerlanding.razor||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{760B598C-035F-43D2-AAB6-E837F4A5F762}|AAP_PRINT_Dashboard\\PressINK-Server-App.csproj|solutionrelative:aap_print_dashboard\\pages\\printerlanding.razor||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{760B598C-035F-43D2-AAB6-E837F4A5F762}|AAP_PRINT_Dashboard\\PressINK-Server-App.csproj|c:\\users\\vac59186\\source\\repos\\choji2\\pressink-dotnet-blazor\\aap_print_dashboard\\pages\\livestats.razor||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{760B598C-035F-43D2-AAB6-E837F4A5F762}|AAP_PRINT_Dashboard\\PressINK-Server-App.csproj|solutionrelative:aap_print_dashboard\\pages\\livestats.razor||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{760B598C-035F-43D2-AAB6-E837F4A5F762}|AAP_PRINT_Dashboard\\PressINK-Server-App.csproj|c:\\users\\vac59186\\source\\repos\\choji2\\pressink-dotnet-blazor\\aap_print_dashboard\\pages\\info views\\m5255objview_2.razor||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{760B598C-035F-43D2-AAB6-E837F4A5F762}|AAP_PRINT_Dashboard\\PressINK-Server-App.csproj|solutionrelative:aap_print_dashboard\\pages\\info views\\m5255objview_2.razor||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{760B598C-035F-43D2-AAB6-E837F4A5F762}|AAP_PRINT_Dashboard\\PressINK-Server-App.csproj|c:\\users\\vac59186\\source\\repos\\choji2\\pressink-dotnet-blazor\\aap_print_dashboard\\pages\\info views\\plantstats.razor||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{760B598C-035F-43D2-AAB6-E837F4A5F762}|AAP_PRINT_Dashboard\\PressINK-Server-App.csproj|solutionrelative:aap_print_dashboard\\pages\\info views\\plantstats.razor||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{760B598C-035F-43D2-AAB6-E837F4A5F762}|AAP_PRINT_Dashboard\\PressINK-Server-App.csproj|c:\\users\\vac59186\\source\\repos\\choji2\\pressink-dotnet-blazor\\aap_print_dashboard\\pages\\info views\\online_overview.razor||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{760B598C-035F-43D2-AAB6-E837F4A5F762}|AAP_PRINT_Dashboard\\PressINK-Server-App.csproj|solutionrelative:aap_print_dashboard\\pages\\info views\\online_overview.razor||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{760B598C-035F-43D2-AAB6-E837F4A5F762}|AAP_PRINT_Dashboard\\PressINK-Server-App.csproj|c:\\users\\vac59186\\source\\repos\\choji2\\pressink-dotnet-blazor\\aap_print_dashboard\\pages\\info views\\m5255_view.razor||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{760B598C-035F-43D2-AAB6-E837F4A5F762}|AAP_PRINT_Dashboard\\PressINK-Server-App.csproj|solutionrelative:aap_print_dashboard\\pages\\info views\\m5255_view.razor||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{760B598C-035F-43D2-AAB6-E837F4A5F762}|AAP_PRINT_Dashboard\\PressINK-Server-App.csproj|c:\\users\\vac59186\\source\\repos\\choji2\\pressink-dotnet-blazor\\aap_print_dashboard\\pages\\info views\\list_view_v1.razor||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{760B598C-035F-43D2-AAB6-E837F4A5F762}|AAP_PRINT_Dashboard\\PressINK-Server-App.csproj|solutionrelative:aap_print_dashboard\\pages\\info views\\list_view_v1.razor||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{760B598C-035F-43D2-AAB6-E837F4A5F762}|AAP_PRINT_Dashboard\\PressINK-Server-App.csproj|c:\\users\\vac59186\\source\\repos\\choji2\\pressink-dotnet-blazor\\aap_print_dashboard\\pages\\info views\\m5255objview_1.razor||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{760B598C-035F-43D2-AAB6-E837F4A5F762}|AAP_PRINT_Dashboard\\PressINK-Server-App.csproj|solutionrelative:aap_print_dashboard\\pages\\info views\\m5255objview_1.razor||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{760B598C-035F-43D2-AAB6-E837F4A5F762}|AAP_PRINT_Dashboard\\PressINK-Server-App.csproj|c:\\users\\vac59186\\source\\repos\\choji2\\pressink-dotnet-blazor\\aap_print_dashboard\\shared\\auth\\login.razor||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{760B598C-035F-43D2-AAB6-E837F4A5F762}|AAP_PRINT_Dashboard\\PressINK-Server-App.csproj|solutionrelative:aap_print_dashboard\\shared\\auth\\login.razor||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{760B598C-035F-43D2-AAB6-E837F4A5F762}|AAP_PRINT_Dashboard\\PressINK-Server-App.csproj|c:\\users\\vac59186\\source\\repos\\choji2\\pressink-dotnet-blazor\\aap_print_dashboard\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{760B598C-035F-43D2-AAB6-E837F4A5F762}|AAP_PRINT_Dashboard\\PressINK-Server-App.csproj|solutionrelative:aap_print_dashboard\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{760B598C-035F-43D2-AAB6-E837F4A5F762}|AAP_PRINT_Dashboard\\PressINK-Server-App.csproj|c:\\users\\vac59186\\source\\repos\\choji2\\pressink-dotnet-blazor\\aap_print_dashboard\\pages\\admin\\printer\\updateprinter.razor||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{760B598C-035F-43D2-AAB6-E837F4A5F762}|AAP_PRINT_Dashboard\\PressINK-Server-App.csproj|solutionrelative:aap_print_dashboard\\pages\\admin\\printer\\updateprinter.razor||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{760B598C-035F-43D2-AAB6-E837F4A5F762}|AAP_PRINT_Dashboard\\PressINK-Server-App.csproj|c:\\users\\vac59186\\source\\repos\\choji2\\pressink-dotnet-blazor\\aap_print_dashboard\\pages\\admin\\printer\\deleteprinter.razor||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{760B598C-035F-43D2-AAB6-E837F4A5F762}|AAP_PRINT_Dashboard\\PressINK-Server-App.csproj|solutionrelative:aap_print_dashboard\\pages\\admin\\printer\\deleteprinter.razor||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{760B598C-035F-43D2-AAB6-E837F4A5F762}|AAP_PRINT_Dashboard\\PressINK-Server-App.csproj|c:\\users\\vac59186\\source\\repos\\choji2\\pressink-dotnet-blazor\\aap_print_dashboard\\pages\\admin\\printer\\createprinter.razor||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{760B598C-035F-43D2-AAB6-E837F4A5F762}|AAP_PRINT_Dashboard\\PressINK-Server-App.csproj|solutionrelative:aap_print_dashboard\\pages\\admin\\printer\\createprinter.razor||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{760B598C-035F-43D2-AAB6-E837F4A5F762}|AAP_PRINT_Dashboard\\PressINK-Server-App.csproj|c:\\users\\vac59186\\source\\repos\\choji2\\pressink-dotnet-blazor\\aap_print_dashboard\\pages\\admin\\plant\\updateplant.razor||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{760B598C-035F-43D2-AAB6-E837F4A5F762}|AAP_PRINT_Dashboard\\PressINK-Server-App.csproj|solutionrelative:aap_print_dashboard\\pages\\admin\\plant\\updateplant.razor||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{760B598C-035F-43D2-AAB6-E837F4A5F762}|AAP_PRINT_Dashboard\\PressINK-Server-App.csproj|c:\\users\\vac59186\\source\\repos\\choji2\\pressink-dotnet-blazor\\aap_print_dashboard\\pages\\admin\\plant\\deleteplant.razor||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{760B598C-035F-43D2-AAB6-E837F4A5F762}|AAP_PRINT_Dashboard\\PressINK-Server-App.csproj|solutionrelative:aap_print_dashboard\\pages\\admin\\plant\\deleteplant.razor||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{760B598C-035F-43D2-AAB6-E837F4A5F762}|AAP_PRINT_Dashboard\\PressINK-Server-App.csproj|c:\\users\\vac59186\\source\\repos\\choji2\\pressink-dotnet-blazor\\aap_print_dashboard\\pages\\admin\\plant\\createplant.razor||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{760B598C-035F-43D2-AAB6-E837F4A5F762}|AAP_PRINT_Dashboard\\PressINK-Server-App.csproj|solutionrelative:aap_print_dashboard\\pages\\admin\\plant\\createplant.razor||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{760B598C-035F-43D2-AAB6-E837F4A5F762}|AAP_PRINT_Dashboard\\PressINK-Server-App.csproj|c:\\users\\vac59186\\source\\repos\\choji2\\pressink-dotnet-blazor\\aap_print_dashboard\\pages\\admin\\models\\updatemodels.razor||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{760B598C-035F-43D2-AAB6-E837F4A5F762}|AAP_PRINT_Dashboard\\PressINK-Server-App.csproj|solutionrelative:aap_print_dashboard\\pages\\admin\\models\\updatemodels.razor||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{760B598C-035F-43D2-AAB6-E837F4A5F762}|AAP_PRINT_Dashboard\\PressINK-Server-App.csproj|c:\\users\\vac59186\\source\\repos\\choji2\\pressink-dotnet-blazor\\aap_print_dashboard\\pages\\admin\\models\\getmodels.razor||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{760B598C-035F-43D2-AAB6-E837F4A5F762}|AAP_PRINT_Dashboard\\PressINK-Server-App.csproj|solutionrelative:aap_print_dashboard\\pages\\admin\\models\\getmodels.razor||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{760B598C-035F-43D2-AAB6-E837F4A5F762}|AAP_PRINT_Dashboard\\PressINK-Server-App.csproj|c:\\users\\vac59186\\source\\repos\\choji2\\pressink-dotnet-blazor\\aap_print_dashboard\\pages\\admin\\models\\deletemodels.razor||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{760B598C-035F-43D2-AAB6-E837F4A5F762}|AAP_PRINT_Dashboard\\PressINK-Server-App.csproj|solutionrelative:aap_print_dashboard\\pages\\admin\\models\\deletemodels.razor||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{760B598C-035F-43D2-AAB6-E837F4A5F762}|AAP_PRINT_Dashboard\\PressINK-Server-App.csproj|c:\\users\\vac59186\\source\\repos\\choji2\\pressink-dotnet-blazor\\aap_print_dashboard\\pages\\admin\\models\\createmodels.razor||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{760B598C-035F-43D2-AAB6-E837F4A5F762}|AAP_PRINT_Dashboard\\PressINK-Server-App.csproj|solutionrelative:aap_print_dashboard\\pages\\admin\\models\\createmodels.razor||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{760B598C-035F-43D2-AAB6-E837F4A5F762}|AAP_PRINT_Dashboard\\PressINK-Server-App.csproj|c:\\users\\vac59186\\source\\repos\\choji2\\pressink-dotnet-blazor\\aap_print_dashboard\\pages\\admin\\manufactor\\updatemanufactors.razor||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{760B598C-035F-43D2-AAB6-E837F4A5F762}|AAP_PRINT_Dashboard\\PressINK-Server-App.csproj|solutionrelative:aap_print_dashboard\\pages\\admin\\manufactor\\updatemanufactors.razor||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{760B598C-035F-43D2-AAB6-E837F4A5F762}|AAP_PRINT_Dashboard\\PressINK-Server-App.csproj|c:\\users\\vac59186\\source\\repos\\choji2\\pressink-dotnet-blazor\\aap_print_dashboard\\pages\\admin\\manufactor\\getmanufactors.razor||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{760B598C-035F-43D2-AAB6-E837F4A5F762}|AAP_PRINT_Dashboard\\PressINK-Server-App.csproj|solutionrelative:aap_print_dashboard\\pages\\admin\\manufactor\\getmanufactors.razor||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{760B598C-035F-43D2-AAB6-E837F4A5F762}|AAP_PRINT_Dashboard\\PressINK-Server-App.csproj|c:\\users\\vac59186\\source\\repos\\choji2\\pressink-dotnet-blazor\\aap_print_dashboard\\pages\\admin\\manufactor\\deletemanufactor.razor||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{760B598C-035F-43D2-AAB6-E837F4A5F762}|AAP_PRINT_Dashboard\\PressINK-Server-App.csproj|solutionrelative:aap_print_dashboard\\pages\\admin\\manufactor\\deletemanufactor.razor||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{760B598C-035F-43D2-AAB6-E837F4A5F762}|AAP_PRINT_Dashboard\\PressINK-Server-App.csproj|c:\\users\\vac59186\\source\\repos\\choji2\\pressink-dotnet-blazor\\aap_print_dashboard\\pages\\admin\\manufactor\\createmanufactor.razor||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{760B598C-035F-43D2-AAB6-E837F4A5F762}|AAP_PRINT_Dashboard\\PressINK-Server-App.csproj|solutionrelative:aap_print_dashboard\\pages\\admin\\manufactor\\createmanufactor.razor||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{760B598C-035F-43D2-AAB6-E837F4A5F762}|AAP_PRINT_Dashboard\\PressINK-Server-App.csproj|c:\\users\\vac59186\\source\\repos\\choji2\\pressink-dotnet-blazor\\aap_print_dashboard\\migrations\\20260211140705_adding_modes.designer.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{760B598C-035F-43D2-AAB6-E837F4A5F762}|AAP_PRINT_Dashboard\\PressINK-Server-App.csproj|solutionrelative:aap_print_dashboard\\migrations\\20260211140705_adding_modes.designer.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{760B598C-035F-43D2-AAB6-E837F4A5F762}|AAP_PRINT_Dashboard\\PressINK-Server-App.csproj|c:\\users\\vac59186\\source\\repos\\choji2\\pressink-dotnet-blazor\\aap_print_dashboard\\migrations\\api_formcontextmodelsnapshot.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{760B598C-035F-43D2-AAB6-E837F4A5F762}|AAP_PRINT_Dashboard\\PressINK-Server-App.csproj|solutionrelative:aap_print_dashboard\\migrations\\api_formcontextmodelsnapshot.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{760B598C-035F-43D2-AAB6-E837F4A5F762}|AAP_PRINT_Dashboard\\PressINK-Server-App.csproj|c:\\users\\vac59186\\source\\repos\\choji2\\pressink-dotnet-blazor\\aap_print_dashboard\\migrations\\20260211140705_adding_modes.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{760B598C-035F-43D2-AAB6-E837F4A5F762}|AAP_PRINT_Dashboard\\PressINK-Server-App.csproj|solutionrelative:aap_print_dashboard\\migrations\\20260211140705_adding_modes.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    }
+  ],
+  "DocumentGroupContainers": [
+    {
+      "Orientation": 0,
+      "VerticalTabListWidth": 256,
+      "DocumentGroups": [
+        {
+          "DockedWidth": 200,
+          "SelectedChildIndex": 0,
+          "Children": [
+            {
+              "$type": "Document",
+              "DocumentIndex": 0,
+              "Title": "_Host.cshtml",
+              "DocumentMoniker": "C:\\Users\\vac59186\\source\\repos\\Choji2\\PressINK-DOTNET-Blazor\\AAP_PRINT_Dashboard\\Pages\\_Host.cshtml",
+              "RelativeDocumentMoniker": "AAP_PRINT_Dashboard\\Pages\\_Host.cshtml",
+              "ToolTip": "C:\\Users\\vac59186\\source\\repos\\Choji2\\PressINK-DOTNET-Blazor\\AAP_PRINT_Dashboard\\Pages\\_Host.cshtml",
+              "RelativeToolTip": "AAP_PRINT_Dashboard\\Pages\\_Host.cshtml",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAIAAAAeAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2026-02-26T18:24:35.356Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 1,
+              "Title": "Error_Dis_v.razor",
+              "DocumentMoniker": "C:\\Users\\vac59186\\source\\repos\\Choji2\\PressINK-DOTNET-Blazor\\AAP_PRINT_Dashboard\\Pages\\TemplateViews\\Error_Dis_v.razor",
+              "RelativeDocumentMoniker": "AAP_PRINT_Dashboard\\Pages\\TemplateViews\\Error_Dis_v.razor",
+              "ToolTip": "C:\\Users\\vac59186\\source\\repos\\Choji2\\PressINK-DOTNET-Blazor\\AAP_PRINT_Dashboard\\Pages\\TemplateViews\\Error_Dis_v.razor",
+              "RelativeToolTip": "AAP_PRINT_Dashboard\\Pages\\TemplateViews\\Error_Dis_v.razor",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAMAAAAvAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2026-02-26T18:14:22.184Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 3,
+              "Title": "STA_v.razor",
+              "DocumentMoniker": "C:\\Users\\vac59186\\source\\repos\\Choji2\\PressINK-DOTNET-Blazor\\AAP_PRINT_Dashboard\\Pages\\TemplateViews\\STA_v.razor",
+              "RelativeDocumentMoniker": "AAP_PRINT_Dashboard\\Pages\\TemplateViews\\STA_v.razor",
+              "ToolTip": "C:\\Users\\vac59186\\source\\repos\\Choji2\\PressINK-DOTNET-Blazor\\AAP_PRINT_Dashboard\\Pages\\TemplateViews\\STA_v.razor",
+              "RelativeToolTip": "AAP_PRINT_Dashboard\\Pages\\TemplateViews\\STA_v.razor",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAMAAAAvAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2026-02-26T18:14:11.412Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 2,
+              "Title": "MSP_v.razor",
+              "DocumentMoniker": "C:\\Users\\vac59186\\source\\repos\\Choji2\\PressINK-DOTNET-Blazor\\AAP_PRINT_Dashboard\\Pages\\TemplateViews\\MSP_v.razor",
+              "RelativeDocumentMoniker": "AAP_PRINT_Dashboard\\Pages\\TemplateViews\\MSP_v.razor",
+              "ToolTip": "C:\\Users\\vac59186\\source\\repos\\Choji2\\PressINK-DOTNET-Blazor\\AAP_PRINT_Dashboard\\Pages\\TemplateViews\\MSP_v.razor",
+              "RelativeToolTip": "AAP_PRINT_Dashboard\\Pages\\TemplateViews\\MSP_v.razor",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAMAAAAvAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2026-02-26T18:13:49.731Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 5,
+              "Title": "Test.razor",
+              "DocumentMoniker": "C:\\Users\\vac59186\\source\\repos\\Choji2\\PressINK-DOTNET-Blazor\\AAP_PRINT_Dashboard\\Pages\\Test\\Test.razor",
+              "RelativeDocumentMoniker": "AAP_PRINT_Dashboard\\Pages\\Test\\Test.razor",
+              "ToolTip": "C:\\Users\\vac59186\\source\\repos\\Choji2\\PressINK-DOTNET-Blazor\\AAP_PRINT_Dashboard\\Pages\\Test\\Test.razor",
+              "RelativeToolTip": "AAP_PRINT_Dashboard\\Pages\\Test\\Test.razor",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAMAAAAhAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2026-02-26T18:13:38.23Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 4,
+              "Title": "LogoutButton.razor",
+              "DocumentMoniker": "C:\\Users\\vac59186\\source\\repos\\Choji2\\PressINK-DOTNET-Blazor\\AAP_PRINT_Dashboard\\Shared\\Auth\\LogoutButton.razor",
+              "RelativeDocumentMoniker": "AAP_PRINT_Dashboard\\Shared\\Auth\\LogoutButton.razor",
+              "ToolTip": "C:\\Users\\vac59186\\source\\repos\\Choji2\\PressINK-DOTNET-Blazor\\AAP_PRINT_Dashboard\\Shared\\Auth\\LogoutButton.razor",
+              "RelativeToolTip": "AAP_PRINT_Dashboard\\Shared\\Auth\\LogoutButton.razor",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAEAAAApAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2026-02-26T18:13:28.136Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 8,
+              "Title": "LiveStats.razor",
+              "DocumentMoniker": "C:\\Users\\vac59186\\source\\repos\\Choji2\\PressINK-DOTNET-Blazor\\AAP_PRINT_Dashboard\\Pages\\LiveStats.razor",
+              "RelativeDocumentMoniker": "AAP_PRINT_Dashboard\\Pages\\LiveStats.razor",
+              "ToolTip": "C:\\Users\\vac59186\\source\\repos\\Choji2\\PressINK-DOTNET-Blazor\\AAP_PRINT_Dashboard\\Pages\\LiveStats.razor",
+              "RelativeToolTip": "AAP_PRINT_Dashboard\\Pages\\LiveStats.razor",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAMAAAAaAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2026-02-26T18:12:57.805Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 9,
+              "Title": "M5255OBJView_2.razor",
+              "DocumentMoniker": "C:\\Users\\vac59186\\source\\repos\\Choji2\\PressINK-DOTNET-Blazor\\AAP_PRINT_Dashboard\\Pages\\Info Views\\M5255OBJView_2.razor",
+              "RelativeDocumentMoniker": "AAP_PRINT_Dashboard\\Pages\\Info Views\\M5255OBJView_2.razor",
+              "ToolTip": "C:\\Users\\vac59186\\source\\repos\\Choji2\\PressINK-DOTNET-Blazor\\AAP_PRINT_Dashboard\\Pages\\Info Views\\M5255OBJView_2.razor",
+              "RelativeToolTip": "AAP_PRINT_Dashboard\\Pages\\Info Views\\M5255OBJView_2.razor",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAaAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2026-02-26T18:12:44.273Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 6,
+              "Title": "PrinterStatCHD.razor",
+              "DocumentMoniker": "C:\\Users\\vac59186\\source\\repos\\Choji2\\PressINK-DOTNET-Blazor\\AAP_PRINT_Dashboard\\Pages\\Info Views\\PrinterStatCHD.razor",
+              "RelativeDocumentMoniker": "AAP_PRINT_Dashboard\\Pages\\Info Views\\PrinterStatCHD.razor",
+              "ToolTip": "C:\\Users\\vac59186\\source\\repos\\Choji2\\PressINK-DOTNET-Blazor\\AAP_PRINT_Dashboard\\Pages\\Info Views\\PrinterStatCHD.razor",
+              "RelativeToolTip": "AAP_PRINT_Dashboard\\Pages\\Info Views\\PrinterStatCHD.razor",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAIAAAAhAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2026-02-26T18:12:30.398Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 10,
+              "Title": "PlantStats.razor",
+              "DocumentMoniker": "C:\\Users\\vac59186\\source\\repos\\Choji2\\PressINK-DOTNET-Blazor\\AAP_PRINT_Dashboard\\Pages\\Info Views\\PlantStats.razor",
+              "RelativeDocumentMoniker": "AAP_PRINT_Dashboard\\Pages\\Info Views\\PlantStats.razor",
+              "ToolTip": "C:\\Users\\vac59186\\source\\repos\\Choji2\\PressINK-DOTNET-Blazor\\AAP_PRINT_Dashboard\\Pages\\Info Views\\PlantStats.razor",
+              "RelativeToolTip": "AAP_PRINT_Dashboard\\Pages\\Info Views\\PlantStats.razor",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAcAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2026-02-26T18:12:09.449Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 11,
+              "Title": "Online_OverView.razor",
+              "DocumentMoniker": "C:\\Users\\vac59186\\source\\repos\\Choji2\\PressINK-DOTNET-Blazor\\AAP_PRINT_Dashboard\\Pages\\Info Views\\Online_OverView.razor",
+              "RelativeDocumentMoniker": "AAP_PRINT_Dashboard\\Pages\\Info Views\\Online_OverView.razor",
+              "ToolTip": "C:\\Users\\vac59186\\source\\repos\\Choji2\\PressINK-DOTNET-Blazor\\AAP_PRINT_Dashboard\\Pages\\Info Views\\Online_OverView.razor",
+              "RelativeToolTip": "AAP_PRINT_Dashboard\\Pages\\Info Views\\Online_OverView.razor",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAABAAAAAFAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2026-02-26T18:11:57.694Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 12,
+              "Title": "M5255_View.razor",
+              "DocumentMoniker": "C:\\Users\\vac59186\\source\\repos\\Choji2\\PressINK-DOTNET-Blazor\\AAP_PRINT_Dashboard\\Pages\\Info Views\\M5255_View.razor",
+              "RelativeDocumentMoniker": "AAP_PRINT_Dashboard\\Pages\\Info Views\\M5255_View.razor",
+              "ToolTip": "C:\\Users\\vac59186\\source\\repos\\Choji2\\PressINK-DOTNET-Blazor\\AAP_PRINT_Dashboard\\Pages\\Info Views\\M5255_View.razor",
+              "RelativeToolTip": "AAP_PRINT_Dashboard\\Pages\\Info Views\\M5255_View.razor",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAEAAAAaAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2026-02-26T18:11:49.094Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 13,
+              "Title": "List_View_v1.razor",
+              "DocumentMoniker": "C:\\Users\\vac59186\\source\\repos\\Choji2\\PressINK-DOTNET-Blazor\\AAP_PRINT_Dashboard\\Pages\\Info Views\\List_View_v1.razor",
+              "RelativeDocumentMoniker": "AAP_PRINT_Dashboard\\Pages\\Info Views\\List_View_v1.razor",
+              "ToolTip": "C:\\Users\\vac59186\\source\\repos\\Choji2\\PressINK-DOTNET-Blazor\\AAP_PRINT_Dashboard\\Pages\\Info Views\\List_View_v1.razor",
+              "RelativeToolTip": "AAP_PRINT_Dashboard\\Pages\\Info Views\\List_View_v1.razor",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAHAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2026-02-26T18:11:36Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 14,
+              "Title": "M5255OBJView_1.razor",
+              "DocumentMoniker": "C:\\Users\\vac59186\\source\\repos\\Choji2\\PressINK-DOTNET-Blazor\\AAP_PRINT_Dashboard\\Pages\\Info Views\\M5255OBJView_1.razor",
+              "RelativeDocumentMoniker": "AAP_PRINT_Dashboard\\Pages\\Info Views\\M5255OBJView_1.razor",
+              "ToolTip": "C:\\Users\\vac59186\\source\\repos\\Choji2\\PressINK-DOTNET-Blazor\\AAP_PRINT_Dashboard\\Pages\\Info Views\\M5255OBJView_1.razor",
+              "RelativeToolTip": "AAP_PRINT_Dashboard\\Pages\\Info Views\\M5255OBJView_1.razor",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAaAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2026-02-26T18:11:26.196Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 15,
+              "Title": "Login.razor",
+              "DocumentMoniker": "C:\\Users\\vac59186\\source\\repos\\Choji2\\PressINK-DOTNET-Blazor\\AAP_PRINT_Dashboard\\Shared\\Auth\\Login.razor",
+              "RelativeDocumentMoniker": "AAP_PRINT_Dashboard\\Shared\\Auth\\Login.razor",
+              "ToolTip": "C:\\Users\\vac59186\\source\\repos\\Choji2\\PressINK-DOTNET-Blazor\\AAP_PRINT_Dashboard\\Shared\\Auth\\Login.razor",
+              "RelativeToolTip": "AAP_PRINT_Dashboard\\Shared\\Auth\\Login.razor",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAEAAAApAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2026-02-26T18:10:53.381Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 16,
+              "Title": "Program.cs",
+              "DocumentMoniker": "C:\\Users\\vac59186\\source\\repos\\Choji2\\PressINK-DOTNET-Blazor\\AAP_PRINT_Dashboard\\Program.cs",
+              "RelativeDocumentMoniker": "AAP_PRINT_Dashboard\\Program.cs",
+              "ToolTip": "C:\\Users\\vac59186\\source\\repos\\Choji2\\PressINK-DOTNET-Blazor\\AAP_PRINT_Dashboard\\Program.cs",
+              "RelativeToolTip": "AAP_PRINT_Dashboard\\Program.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAcAAAAcAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-02-26T18:10:23.625Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 17,
+              "Title": "UpdatePrinter.razor",
+              "DocumentMoniker": "C:\\Users\\vac59186\\source\\repos\\Choji2\\PressINK-DOTNET-Blazor\\AAP_PRINT_Dashboard\\Pages\\Admin\\PRINTER\\UpdatePrinter.razor",
+              "RelativeDocumentMoniker": "AAP_PRINT_Dashboard\\Pages\\Admin\\PRINTER\\UpdatePrinter.razor",
+              "ToolTip": "C:\\Users\\vac59186\\source\\repos\\Choji2\\PressINK-DOTNET-Blazor\\AAP_PRINT_Dashboard\\Pages\\Admin\\PRINTER\\UpdatePrinter.razor",
+              "RelativeToolTip": "AAP_PRINT_Dashboard\\Pages\\Admin\\PRINTER\\UpdatePrinter.razor",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAACEAAAARAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2026-02-26T18:10:02.11Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 18,
+              "Title": "DeletePrinter.razor",
+              "DocumentMoniker": "C:\\Users\\vac59186\\source\\repos\\Choji2\\PressINK-DOTNET-Blazor\\AAP_PRINT_Dashboard\\Pages\\Admin\\PRINTER\\DeletePrinter.razor",
+              "RelativeDocumentMoniker": "AAP_PRINT_Dashboard\\Pages\\Admin\\PRINTER\\DeletePrinter.razor",
+              "ToolTip": "C:\\Users\\vac59186\\source\\repos\\Choji2\\PressINK-DOTNET-Blazor\\AAP_PRINT_Dashboard\\Pages\\Admin\\PRINTER\\DeletePrinter.razor",
+              "RelativeToolTip": "AAP_PRINT_Dashboard\\Pages\\Admin\\PRINTER\\DeletePrinter.razor",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAEAAAAaAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2026-02-26T18:09:50.011Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 19,
+              "Title": "CreatePrinter.razor",
+              "DocumentMoniker": "C:\\Users\\vac59186\\source\\repos\\Choji2\\PressINK-DOTNET-Blazor\\AAP_PRINT_Dashboard\\Pages\\Admin\\PRINTER\\CreatePrinter.razor",
+              "RelativeDocumentMoniker": "AAP_PRINT_Dashboard\\Pages\\Admin\\PRINTER\\CreatePrinter.razor",
+              "ToolTip": "C:\\Users\\vac59186\\source\\repos\\Choji2\\PressINK-DOTNET-Blazor\\AAP_PRINT_Dashboard\\Pages\\Admin\\PRINTER\\CreatePrinter.razor",
+              "RelativeToolTip": "AAP_PRINT_Dashboard\\Pages\\Admin\\PRINTER\\CreatePrinter.razor",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAEAAAAaAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2026-02-26T18:09:38.214Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 20,
+              "Title": "UpdatePlant.razor",
+              "DocumentMoniker": "C:\\Users\\vac59186\\source\\repos\\Choji2\\PressINK-DOTNET-Blazor\\AAP_PRINT_Dashboard\\Pages\\Admin\\Plant\\UpdatePlant.razor",
+              "RelativeDocumentMoniker": "AAP_PRINT_Dashboard\\Pages\\Admin\\Plant\\UpdatePlant.razor",
+              "ToolTip": "C:\\Users\\vac59186\\source\\repos\\Choji2\\PressINK-DOTNET-Blazor\\AAP_PRINT_Dashboard\\Pages\\Admin\\Plant\\UpdatePlant.razor",
+              "RelativeToolTip": "AAP_PRINT_Dashboard\\Pages\\Admin\\Plant\\UpdatePlant.razor",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAEAAAAaAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2026-02-26T18:09:22.1Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 21,
+              "Title": "DeletePlant.razor",
+              "DocumentMoniker": "C:\\Users\\vac59186\\source\\repos\\Choji2\\PressINK-DOTNET-Blazor\\AAP_PRINT_Dashboard\\Pages\\Admin\\Plant\\DeletePlant.razor",
+              "RelativeDocumentMoniker": "AAP_PRINT_Dashboard\\Pages\\Admin\\Plant\\DeletePlant.razor",
+              "ToolTip": "C:\\Users\\vac59186\\source\\repos\\Choji2\\PressINK-DOTNET-Blazor\\AAP_PRINT_Dashboard\\Pages\\Admin\\Plant\\DeletePlant.razor",
+              "RelativeToolTip": "AAP_PRINT_Dashboard\\Pages\\Admin\\Plant\\DeletePlant.razor",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAEAAAAaAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2026-02-26T18:09:11.262Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 22,
+              "Title": "CreatePlant.razor",
+              "DocumentMoniker": "C:\\Users\\vac59186\\source\\repos\\Choji2\\PressINK-DOTNET-Blazor\\AAP_PRINT_Dashboard\\Pages\\Admin\\Plant\\CreatePlant.razor",
+              "RelativeDocumentMoniker": "AAP_PRINT_Dashboard\\Pages\\Admin\\Plant\\CreatePlant.razor",
+              "ToolTip": "C:\\Users\\vac59186\\source\\repos\\Choji2\\PressINK-DOTNET-Blazor\\AAP_PRINT_Dashboard\\Pages\\Admin\\Plant\\CreatePlant.razor",
+              "RelativeToolTip": "AAP_PRINT_Dashboard\\Pages\\Admin\\Plant\\CreatePlant.razor",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAEAAAAaAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2026-02-26T18:08:59.791Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 23,
+              "Title": "UpdateModels.razor",
+              "DocumentMoniker": "C:\\Users\\vac59186\\source\\repos\\Choji2\\PressINK-DOTNET-Blazor\\AAP_PRINT_Dashboard\\Pages\\Admin\\Models\\UpdateModels.razor",
+              "RelativeDocumentMoniker": "AAP_PRINT_Dashboard\\Pages\\Admin\\Models\\UpdateModels.razor",
+              "ToolTip": "C:\\Users\\vac59186\\source\\repos\\Choji2\\PressINK-DOTNET-Blazor\\AAP_PRINT_Dashboard\\Pages\\Admin\\Models\\UpdateModels.razor",
+              "RelativeToolTip": "AAP_PRINT_Dashboard\\Pages\\Admin\\Models\\UpdateModels.razor",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAEAAAAaAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2026-02-26T18:08:29.086Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 24,
+              "Title": "GetModels.razor",
+              "DocumentMoniker": "C:\\Users\\vac59186\\source\\repos\\Choji2\\PressINK-DOTNET-Blazor\\AAP_PRINT_Dashboard\\Pages\\Admin\\Models\\GetModels.razor",
+              "RelativeDocumentMoniker": "AAP_PRINT_Dashboard\\Pages\\Admin\\Models\\GetModels.razor",
+              "ToolTip": "C:\\Users\\vac59186\\source\\repos\\Choji2\\PressINK-DOTNET-Blazor\\AAP_PRINT_Dashboard\\Pages\\Admin\\Models\\GetModels.razor",
+              "RelativeToolTip": "AAP_PRINT_Dashboard\\Pages\\Admin\\Models\\GetModels.razor",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAMAAAAaAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2026-02-26T18:08:16.645Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 25,
+              "Title": "DeleteModels.razor",
+              "DocumentMoniker": "C:\\Users\\vac59186\\source\\repos\\Choji2\\PressINK-DOTNET-Blazor\\AAP_PRINT_Dashboard\\Pages\\Admin\\Models\\DeleteModels.razor",
+              "RelativeDocumentMoniker": "AAP_PRINT_Dashboard\\Pages\\Admin\\Models\\DeleteModels.razor",
+              "ToolTip": "C:\\Users\\vac59186\\source\\repos\\Choji2\\PressINK-DOTNET-Blazor\\AAP_PRINT_Dashboard\\Pages\\Admin\\Models\\DeleteModels.razor",
+              "RelativeToolTip": "AAP_PRINT_Dashboard\\Pages\\Admin\\Models\\DeleteModels.razor",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAEAAAAaAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2026-02-26T18:08:03.722Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 26,
+              "Title": "CreateModels.razor",
+              "DocumentMoniker": "C:\\Users\\vac59186\\source\\repos\\Choji2\\PressINK-DOTNET-Blazor\\AAP_PRINT_Dashboard\\Pages\\Admin\\Models\\CreateModels.razor",
+              "RelativeDocumentMoniker": "AAP_PRINT_Dashboard\\Pages\\Admin\\Models\\CreateModels.razor",
+              "ToolTip": "C:\\Users\\vac59186\\source\\repos\\Choji2\\PressINK-DOTNET-Blazor\\AAP_PRINT_Dashboard\\Pages\\Admin\\Models\\CreateModels.razor",
+              "RelativeToolTip": "AAP_PRINT_Dashboard\\Pages\\Admin\\Models\\CreateModels.razor",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAEAAAAaAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2026-02-26T18:07:53.222Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 27,
+              "Title": "UpdateManufactors.razor",
+              "DocumentMoniker": "C:\\Users\\vac59186\\source\\repos\\Choji2\\PressINK-DOTNET-Blazor\\AAP_PRINT_Dashboard\\Pages\\Admin\\Manufactor\\UpdateManufactors.razor",
+              "RelativeDocumentMoniker": "AAP_PRINT_Dashboard\\Pages\\Admin\\Manufactor\\UpdateManufactors.razor",
+              "ToolTip": "C:\\Users\\vac59186\\source\\repos\\Choji2\\PressINK-DOTNET-Blazor\\AAP_PRINT_Dashboard\\Pages\\Admin\\Manufactor\\UpdateManufactors.razor",
+              "RelativeToolTip": "AAP_PRINT_Dashboard\\Pages\\Admin\\Manufactor\\UpdateManufactors.razor",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAEAAAAaAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2026-02-26T18:07:39.044Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 28,
+              "Title": "GetManufactors.razor",
+              "DocumentMoniker": "C:\\Users\\vac59186\\source\\repos\\Choji2\\PressINK-DOTNET-Blazor\\AAP_PRINT_Dashboard\\Pages\\Admin\\Manufactor\\GetManufactors.razor",
+              "RelativeDocumentMoniker": "AAP_PRINT_Dashboard\\Pages\\Admin\\Manufactor\\GetManufactors.razor",
+              "ToolTip": "C:\\Users\\vac59186\\source\\repos\\Choji2\\PressINK-DOTNET-Blazor\\AAP_PRINT_Dashboard\\Pages\\Admin\\Manufactor\\GetManufactors.razor",
+              "RelativeToolTip": "AAP_PRINT_Dashboard\\Pages\\Admin\\Manufactor\\GetManufactors.razor",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAEAAAAiAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2026-02-26T18:05:36.108Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 29,
+              "Title": "DeleteManufactor.razor",
+              "DocumentMoniker": "C:\\Users\\vac59186\\source\\repos\\Choji2\\PressINK-DOTNET-Blazor\\AAP_PRINT_Dashboard\\Pages\\Admin\\Manufactor\\DeleteManufactor.razor",
+              "RelativeDocumentMoniker": "AAP_PRINT_Dashboard\\Pages\\Admin\\Manufactor\\DeleteManufactor.razor",
+              "ToolTip": "C:\\Users\\vac59186\\source\\repos\\Choji2\\PressINK-DOTNET-Blazor\\AAP_PRINT_Dashboard\\Pages\\Admin\\Manufactor\\DeleteManufactor.razor",
+              "RelativeToolTip": "AAP_PRINT_Dashboard\\Pages\\Admin\\Manufactor\\DeleteManufactor.razor",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAEAAAAaAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2026-02-26T18:05:22.429Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 30,
+              "Title": "CreateManufactor.razor",
+              "DocumentMoniker": "C:\\Users\\vac59186\\source\\repos\\Choji2\\PressINK-DOTNET-Blazor\\AAP_PRINT_Dashboard\\Pages\\Admin\\Manufactor\\CreateManufactor.razor",
+              "RelativeDocumentMoniker": "AAP_PRINT_Dashboard\\Pages\\Admin\\Manufactor\\CreateManufactor.razor",
+              "ToolTip": "C:\\Users\\vac59186\\source\\repos\\Choji2\\PressINK-DOTNET-Blazor\\AAP_PRINT_Dashboard\\Pages\\Admin\\Manufactor\\CreateManufactor.razor",
+              "RelativeToolTip": "AAP_PRINT_Dashboard\\Pages\\Admin\\Manufactor\\CreateManufactor.razor",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAEAAAAaAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2026-02-26T18:05:13.481Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 32,
+              "Title": "API_FormContextModelSnapshot.cs",
+              "DocumentMoniker": "C:\\Users\\vac59186\\source\\repos\\Choji2\\PressINK-DOTNET-Blazor\\AAP_PRINT_Dashboard\\Migrations\\API_FormContextModelSnapshot.cs",
+              "RelativeDocumentMoniker": "AAP_PRINT_Dashboard\\Migrations\\API_FormContextModelSnapshot.cs",
+              "ToolTip": "C:\\Users\\vac59186\\source\\repos\\Choji2\\PressINK-DOTNET-Blazor\\AAP_PRINT_Dashboard\\Migrations\\API_FormContextModelSnapshot.cs",
+              "RelativeToolTip": "AAP_PRINT_Dashboard\\Migrations\\API_FormContextModelSnapshot.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAIAAAAZAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-02-26T18:04:53.66Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 33,
+              "Title": "20260211140705_adding_modes.cs",
+              "DocumentMoniker": "C:\\Users\\vac59186\\source\\repos\\Choji2\\PressINK-DOTNET-Blazor\\AAP_PRINT_Dashboard\\Migrations\\20260211140705_adding_modes.cs",
+              "RelativeDocumentMoniker": "AAP_PRINT_Dashboard\\Migrations\\20260211140705_adding_modes.cs",
+              "ToolTip": "C:\\Users\\vac59186\\source\\repos\\Choji2\\PressINK-DOTNET-Blazor\\AAP_PRINT_Dashboard\\Migrations\\20260211140705_adding_modes.cs",
+              "RelativeToolTip": "AAP_PRINT_Dashboard\\Migrations\\20260211140705_adding_modes.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAQAAAAdAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-02-26T18:04:45.819Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Bookmark",
+              "Name": "ST:0:0:{aa2115a1-9712-457b-9047-dbb71ca2cdd2}"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 31,
+              "Title": "20260211140705_adding_modes.Designer.cs",
+              "DocumentMoniker": "C:\\Users\\vac59186\\source\\repos\\Choji2\\PressINK-DOTNET-Blazor\\AAP_PRINT_Dashboard\\Migrations\\20260211140705_adding_modes.Designer.cs",
+              "RelativeDocumentMoniker": "AAP_PRINT_Dashboard\\Migrations\\20260211140705_adding_modes.Designer.cs",
+              "ToolTip": "C:\\Users\\vac59186\\source\\repos\\Choji2\\PressINK-DOTNET-Blazor\\AAP_PRINT_Dashboard\\Migrations\\20260211140705_adding_modes.Designer.cs",
+              "RelativeToolTip": "AAP_PRINT_Dashboard\\Migrations\\20260211140705_adding_modes.Designer.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAqwBEAAAAgAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-02-26T18:03:43.119Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 7,
+              "Title": "PrinterLanding.razor",
+              "DocumentMoniker": "C:\\Users\\vac59186\\source\\repos\\Choji2\\PressINK-DOTNET-Blazor\\AAP_PRINT_Dashboard\\Pages\\PrinterLanding.razor",
+              "RelativeDocumentMoniker": "AAP_PRINT_Dashboard\\Pages\\PrinterLanding.razor",
+              "ToolTip": "C:\\Users\\vac59186\\source\\repos\\Choji2\\PressINK-DOTNET-Blazor\\AAP_PRINT_Dashboard\\Pages\\PrinterLanding.razor",
+              "RelativeToolTip": "AAP_PRINT_Dashboard\\Pages\\PrinterLanding.razor",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAYAAAAhAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2026-02-26T18:03:05.635Z",
+              "EditorCaption": ""
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}
